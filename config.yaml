@@ -1,0 +1,84 @@
+# Default configuration for cuda-opt-agent
+# Override via environment variables: CUDA_OPT_<SECTION>_<KEY>
+
+project:
+  name: "cuda-opt-agent"
+  workspace_dir: "./workspace"
+  artifact_dir: "./artifacts"
+
+compiler:
+  nvcc_path: "nvcc"
+  default_arch: "sm_80"
+  extra_flags: []
+  ptx_enabled: true
+
+profiling:
+  ncu_path: "ncu"
+  enabled: true
+  metrics:
+    - "gpu__time_duration.sum"
+    - "sm__throughput.avg_pct_of_peak_sustained_elapsed"
+    - "dram__throughput.avg_pct_of_peak_sustained_elapsed"
+    - "l1tex__throughput.avg_pct_of_peak_sustained_elapsed"
+    - "sm__warps_active.avg.pct_of_peak_sustained_active"
+    - "launch__registers_per_thread"
+    - "launch__occupancy_limit_registers"
+    - "launch__occupancy_limit_shared_mem"
+    - "smsp__sass_average_data_bytes_per_sector_mem_global_op_ld.pct"
+    - "smsp__sass_average_data_bytes_per_sector_mem_global_op_st.pct"
+
+benchmark:
+  warmup_iterations: 3
+  timing_iterations: 10
+  use_cuda_events: true
+  timeout_seconds: 120
+
+llm:
+  provider: "claude"
+  claude:
+    model: "claude-sonnet-4-20250514"
+    max_tokens: 4096
+    temperature: 0.3
+  openai:
+    model: "gpt-4o"
+    max_tokens: 4096
+    temperature: 0.3
+  gemini:
+    model: "gemini-2.5-pro"
+    max_tokens: 4096
+    temperature: 0.3
+  ollama:
+    model: "codellama:34b"
+    base_url: "http://localhost:11434"
+    max_tokens: 4096
+    temperature: 0.3
+
+optimization:
+  max_iterations: 20
+  convergence_patience: 3
+  min_speedup_threshold: 1.01
+  correctness_tolerance:
+    relative: 1.0e-4
+    absolute: 1.0e-5
+
+search:
+  strategy: "grid"
+  grid:
+    parallelism: 4
+  random:
+    max_samples: 50
+    seed: 42
+
+analysis:
+  ptx_enabled: true
+  feature_extraction: true
+  cost_model: "roofline"
+
+database:
+  url: "sqlite:///./workspace/cuda_opt.db"
+  echo: false
+
+logging:
+  level: "INFO"
+  format: "json"
+  file: null
