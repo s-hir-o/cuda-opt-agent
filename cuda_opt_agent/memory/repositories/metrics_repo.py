@@ -20,7 +20,7 @@ class MetricsRepo:
     def save(self, metrics: ProfileMetrics) -> int:
         """Persist a ProfileMetrics. Returns the auto-generated DB id."""
         row = ProfileMetricsRow(
-            variant_id=metrics.metadata.get("variant_id"),
+            variant_id=metrics.variant_id,
             kernel_name=metrics.kernel_name,
             gpu_name=metrics.gpu_name,
             arch=metrics.arch,
@@ -47,6 +47,7 @@ class MetricsRepo:
             profiled_at=metrics.profiled_at,
         )
         self._repo.add(row)
+        self._session.flush()
         return row.id  # type: ignore[return-value]
 
     def get(self, id: int) -> ProfileMetrics | None:
@@ -83,12 +84,11 @@ class MetricsRepo:
         rows = self._session.execute(stmt).scalars().all()
         return [self._to_pydantic(r) for r in rows]
 
-    # ── Conversion ─────────────────────────────────────────────
-
     @staticmethod
     def _to_pydantic(row: ProfileMetricsRow) -> ProfileMetrics:
         return ProfileMetrics(
             kernel_name=row.kernel_name,
+            variant_id=row.variant_id,
             gpu_name=row.gpu_name,
             arch=row.arch,
             gpu_time_ns=row.gpu_time_ns,
@@ -102,7 +102,7 @@ class MetricsRepo:
             registers_per_thread=row.registers_per_thread,
             block_size=tuple(row.block_size_json) if row.block_size_json else None,
             grid_size=tuple(row.grid_size_json) if row.grid_size_json else None,
-            shared_mem_bytes=rows.shared_mem_bytes,
+            shared_mem_bytes=row.shared_mem_bytes,
             global_load_efficiency=row.global_load_efficiency,
             global_store_efficiency=row.global_store_efficiency,
             l2_hit_rate=row.l2_hit_rate,

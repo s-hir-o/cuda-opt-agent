@@ -12,7 +12,8 @@ class ProfileMetrics(BaseModel):
     """Parsed NCU profiling output for a single kernel invocation."""
 
     kernel_name: str
-    
+    # Add this field to ProfileMetrics, near the top with the other fields:
+    variant_id: str | None = None
     gpu_name: str = ""
     arch: str = ""
 
