@@ -15,8 +15,9 @@ class BoundType(str, Enum):
     LATENCY = "latency"
     MIXED = "mixed"
     UNKNOWN = "unknown"
+    OCCUPANCY = "occupancy"
 
-
+    
 class CostEstimate(BaseModel):
     """Predicted performance characteristics of a kernel."""
 

@@ -17,6 +17,9 @@ class ProfileMetrics(BaseModel):
     gpu_name: str = ""
     arch: str = ""
 
+
+    raw_metrics: dict[str, Any] = {}
+    metadata: dict[str, Any] | None = None  # <-- ADD THIS LINE
     # Timing
     gpu_time_ns: float | None = None
     gpu_time_us: float | None = None

@@ -53,6 +53,10 @@ strict = true
 plugins = ["pydantic.mypy"]
 
 [tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:.*utcnow.*:DeprecationWarning",
+    "ignore:.*shadows an attribute.*:UserWarning",
+]
 asyncio_mode = "auto"
 testpaths = ["tests"]
 markers = [
@@ -65,3 +69,5 @@ dev = [
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
 ]
+
+
