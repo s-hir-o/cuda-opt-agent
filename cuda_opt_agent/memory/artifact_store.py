@@ -109,6 +109,17 @@ class ArtifactStore:
         """Check whether an artifact exists."""
         return (self._base_dir / rel_path).is_file()
 
+
+    def delete(self, rel_path: str) -> None:
+        """Delete a single artifact by relative path.
+
+        No-op if the file does not exist. Raises ArtifactNotFoundError
+        is NOT raised for missing files - this is a cleanup operation.
+        """
+        full_path = self._base_dir / rel_path
+        if full_path.is_file():
+            full_path.unlink()
+
     def get_size(self, run_id: str) -> int:
         """Total bytes of all artifacts for a run."""
         run_dir = self._base_dir / run_id

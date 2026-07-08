@@ -43,6 +43,7 @@ class CompilationResult(BaseModel):
     arch: str
     cubin_path: str | None = None
     ptx_path: str | None = None
+    binary_path: str | None = None
     ptx_source: str | None = None
     diagnostics: list[CompilationDiagnostic] = Field(default_factory=list)
     compile_time_s: float = 0.0
