@@ -11,6 +11,7 @@ from typing import Generator
 
 from sqlalchemy import create_engine, event, Engine
 from sqlalchemy.orm import Session, sessionmaker, DeclarativeBase
+from sqlalchemy.pool import StaticPool
 
 from cuda_opt_agent.core.config import DatabaseConfig
 
@@ -46,11 +47,16 @@ def init_db(config: DatabaseConfig) -> Engine:
     """
     global _engine, _SessionFactory
 
-    _engine = create_engine(
-        config.url,
-        echo=config.echo,
-        pool_pre_ping=True,
-    )
+    engine_kwargs = {
+        "echo": config.echo,
+        "pool_pre_ping": True,
+    }
+    if config.url.startswith("sqlite"):
+        engine_kwargs["connect_args"] = {"check_same_thread": False}
+        if config.url in {"sqlite:///:memory:", "sqlite://"}:
+            engine_kwargs["poolclass"] = StaticPool
+
+    _engine = create_engine(config.url, **engine_kwargs)
 
     if config.url.startswith("sqlite"):
         event.listen(_engine, "connect", _apply_sqlite_pragmas)
