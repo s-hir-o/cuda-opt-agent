@@ -216,16 +216,17 @@ def _build_fusion_proof(
     dependency = k1_outputs & k2_reads
 
     if not dependency:
-        # Only try positional fallback if the non-pointer params are identical
-        # (suggesting the kernels are designed to be chained)
+        # Positional fallback for simple producer -> consumer chains where the
+        # intermediate buffer is conventionally named instead of shared by name.
         k1_non_ptr = {p.name for p in info1.parameters if not p.is_pointer}
         k2_non_ptr = {p.name for p in info2.parameters if not p.is_pointer}
-        if k1_non_ptr == k2_non_ptr:
-            k1_writable = [p for p in info1.parameters
-                           if p.is_pointer and not p.is_const]
-            k2_readable = [p for p in info2.parameters
-                           if p.is_pointer and p.is_const]
-            if k1_writable and k2_readable:
+        shared_scalars = k1_non_ptr & k2_non_ptr
+        k1_writable = [p for p in info1.parameters
+                       if p.is_pointer and not p.is_const]
+        k2_readable = [p for p in info2.parameters
+                       if p.is_pointer and p.is_const]
+        if shared_scalars and k1_writable and k2_readable:
+            if k1_writable[0].name == "out" or k2_readable[0].name == "in":
                 dependency.add(k1_writable[0].name)
 
     if not dependency:

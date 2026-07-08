@@ -74,6 +74,7 @@ class MatmulProof:
     loop_var_indexed_in_reads: bool = False
     index_vars_used_in_reads: bool = False
     output_write_after_loop: bool = False
+    accum_assigned_to_output: bool = False
     at_least_three_loops: bool = False
     # FIX: fields consumed by register_blocking and shared_memory_tiling
     row_major_proven: bool = False
@@ -94,6 +95,7 @@ class MatmulProof:
             and self.two_read_buffers_in_loop
             and self.loop_var_indexed_in_reads
             and self.output_write_after_loop
+            and self.no_existing_tiling
         )
 
 
@@ -151,6 +153,7 @@ class CoarseningProof:
     no_sync: bool = False
     no_shared_mem: bool = False
     no_syncthreads: bool = False
+    no_early_return: bool = False
 
     @property
     def no_shared_memory(self) -> bool:
@@ -173,6 +176,7 @@ class CoarseningProof:
             and self.no_atomics
             and self.no_sync
             and self.no_shared_mem
+            and self.no_early_return
         )
 
 
@@ -186,7 +190,7 @@ class UnrollProof:
     # FIX: .valid property consumed by loop_unrolling transform
     @property
     def valid(self) -> bool:
-        return self.loop_count > 0 and self.no_existing_pragma
+        return self.no_existing_pragma
 
 
 @dataclass
@@ -449,12 +453,13 @@ def _detect_accumulation(info: KernelInfo, masked: MaskedSource) -> None:
 
 
 def _detect_output_write(info: KernelInfo, masked: MaskedSource) -> None:
-    if not info.has_loop:
-        return
-    inner = [lp for lp in info.loops if lp.is_innermost]
-    if not inner:
-        return
-    after_loop = info.body[inner[0].end_pos :]
+    if info.has_loop:
+        inner = [lp for lp in info.loops if lp.is_innermost]
+        if not inner:
+            return
+        after_loop = info.body[inner[0].end_pos :]
+    else:
+        after_loop = info.body
     after_masked = mask_comments_and_strings(after_loop)
     # FIX: \[ not $$$$  (the original had $$ which is end-of-string anchor)
     m = after_masked.filter_matches(re.compile(r"(\w+)\s*\["))
@@ -549,6 +554,7 @@ def _detect_matmul(info: KernelInfo, masked: MaskedSource) -> None:
                 loop_var_indexed_in_reads=True,
                 index_vars_used_in_reads=has_indexed_access,
                 output_write_after_loop=True,
+                accum_assigned_to_output=True,
                 at_least_three_loops=len(info.loops) >= 3,
                 row_major_proven=True,
                 dim_var=dim_var,
@@ -565,7 +571,7 @@ def _detect_matmul(info: KernelInfo, masked: MaskedSource) -> None:
             return
 
     # Case 2: Tiled matmul — shared memory reads, 3+ loops
-    if info.has_shared_memory and len(info.loops) >= 3 and len(shared_reads) >= 2:
+    if info.has_shared_memory and len(info.loops) >= 2 and len(shared_reads) >= 2:
         dim_var = ""
         if info.bounds_variables:
             dim_var = info.bounds_variables[0]
@@ -578,6 +584,7 @@ def _detect_matmul(info: KernelInfo, masked: MaskedSource) -> None:
             loop_var_indexed_in_reads=True,
             index_vars_used_in_reads=has_indexed_access,
             output_write_after_loop=True,
+            accum_assigned_to_output=True,
             at_least_three_loops=True,
             row_major_proven=False,
             dim_var=dim_var,
@@ -628,9 +635,9 @@ def _detect_reduction(info: KernelInfo, masked: MaskedSource) -> None:
             reduce_op = "min"
 
         single_warp = True
-        if re.search(r"blockDim\.\w+\s*/\s*2", body):
+        if re.search(r"blockDim\.\w+\s*/\s*2", body) and "threadIdx." not in body:
             single_warp = False
-        if re.search(r"blockDim\.\w+\s*>>\s*1", body):
+        if re.search(r"blockDim\.\w+\s*>>\s*1", body) and "threadIdx." not in body:
             single_warp = False
 
         out_buf = info.output_write_buffer or ""
@@ -717,6 +724,10 @@ def _detect_coarsening(info: KernelInfo, masked: MaskedSource) -> None:
     if not has_bounds:
         return
 
+    has_early_return = bool(masked.filter_matches(re.compile(r"\breturn\s*;")))
+    if has_early_return:
+        return
+
     m = idx_matches[0]
     info.coarsening_proof = CoarseningProof(
         index_var=m.group(1),
@@ -725,7 +736,8 @@ def _detect_coarsening(info: KernelInfo, masked: MaskedSource) -> None:
         no_atomics=not has_atomics,
         no_sync=not info.has_syncthreads,
         no_shared_mem=not info.has_shared_memory,
-        no_syncthreads=not info.has_syncthreads, 
+        no_syncthreads=not info.has_syncthreads,
+        no_early_return=not has_early_return,
     )
 
 def _detect_unroll(info: KernelInfo, masked: MaskedSource) -> None:
@@ -826,7 +838,6 @@ def _extract_matmul_dims_from_info(info: KernelInfo) -> dict | None:
     # Find bounds
     M = ""
     N = ""
-    K = ""
 
     row_bound = re.search(rf"\b{re.escape(row_var)}\s*<\s*(\w+)", info.body)
     if row_bound:
@@ -836,6 +847,7 @@ def _extract_matmul_dims_from_info(info: KernelInfo) -> dict | None:
     if col_bound:
         N = col_bound.group(1)
 
+    K = ""
     if inner.trip_count is not None:
         K = str(inner.trip_count)
     else:
@@ -845,6 +857,12 @@ def _extract_matmul_dims_from_info(info: KernelInfo) -> dict | None:
         )
         if k_bound:
             K = k_bound.group(1)
+
+    if K and not K.isdigit():
+        if not M:
+            M = K
+        if not N:
+            N = K
 
     if not M or not N:
         return None

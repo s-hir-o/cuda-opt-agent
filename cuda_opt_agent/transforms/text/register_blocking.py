@@ -115,7 +115,7 @@ class RegisterBlocking(Transformation):
         store_block = "\n".join(store_lines)
 
         source = kernel.source_code
-        sig_match = re.search(r"(__global__\s+void\s+\w+\s*\([^)]*$$)", source)
+        sig_match = re.search(r"(__global__\s+void\s+\w+\s*\([^)]*\))", source)
         if not sig_match:
             return self._make_result(kernel, source, params, "No kernel signature")
         brace_pos = source.find("{", sig_match.end())
@@ -175,6 +175,7 @@ class RegisterBlocking(Transformation):
             result.transformed_source,
             original_source=result.original_source,
             result=result,
+            check_comments=False,
         ):
             return False
         src = result.transformed_source

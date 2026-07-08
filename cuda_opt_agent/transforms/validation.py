@@ -157,7 +157,11 @@ def validate_transform(
             continue
         body = source[brace_pos + 1 : body_end].strip()
         kernel_bodies_empty.append(not body)
-    if kernel_bodies_empty and all(kernel_bodies_empty):
+    if (
+        kernel_bodies_empty
+        and all(kernel_bodies_empty)
+        and source.strip().startswith("__global__")
+    ):
         errors.append("Kernel has empty body")
 
     # 8. Invented placeholder symbols

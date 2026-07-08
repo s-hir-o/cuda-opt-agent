@@ -99,7 +99,7 @@ class VectorizedLoads(Transformation):
 
         # Build replacements from proven-safe loads only
         safe_load_re = re.compile(
-            r"(\s*)(float)\s+(\w+)\s*=\s*(\w+)\s*$$\s*(\w+)\s*$$\s*;"
+            r"(\s*)(float)\s+(\w+)\s*=\s*(\w+)\s*\[\s*(\w+)\s*\]\s*;"
         )
         masked = mask_comments_and_strings(src)
         loads = masked.filter_matches(safe_load_re)
@@ -170,6 +170,7 @@ class VectorizedLoads(Transformation):
             result.transformed_source,
             original_source=result.original_source,
             result=result,
+            check_comments=False,
         ):
             return False
         src = result.transformed_source

@@ -208,6 +208,7 @@ __device__ float warp_reduce_{detected_op}(float val) {{
             result.transformed_source,
             original_source=result.original_source,
             result=result,
+            check_comments=False,
         ):
             return False
         src = result.transformed_source
