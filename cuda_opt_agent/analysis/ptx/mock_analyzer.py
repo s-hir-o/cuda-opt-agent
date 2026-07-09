@@ -58,4 +58,3 @@ class MockPTXAnalyzer(KernelAnalyzer):
         )
 
 
-LAYER 3.6 — Features
