@@ -1,0 +1,105 @@
+{
+  "case": "row_softmax_384",
+  "family": "row_softmax",
+  "size": 384,
+  "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "f4f6f29baa4e0f84c3d26b3bc5a45fbfb8a99204c520fc5acaab663e6d939ce2",
+  "output_sha256": "f4f6f29baa4e0f84c3d26b3bc5a45fbfb8a99204c520fc5acaab663e6d939ce2",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 384,
+      "seed": 0,
+      "elements": 147456,
+      "max_error": 6.208212764181875e-09
+    },
+    {
+      "version": "optimized",
+      "size": 384,
+      "seed": 0,
+      "elements": 147456,
+      "max_error": 6.208212764181875e-09
+    },
+    {
+      "version": "baseline",
+      "size": 387,
+      "seed": 1,
+      "elements": 149769,
+      "max_error": 7.108012109457995e-09
+    },
+    {
+      "version": "optimized",
+      "size": 387,
+      "seed": 1,
+      "elements": 149769,
+      "max_error": 7.108012109457995e-09
+    },
+    {
+      "version": "baseline",
+      "size": 383,
+      "seed": 7,
+      "elements": 146689,
+      "max_error": 6.072518415195516e-09
+    },
+    {
+      "version": "optimized",
+      "size": 383,
+      "seed": 7,
+      "elements": 146689,
+      "max_error": 6.072518415195516e-09
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.2527045371666667,
+      "median_ms": 0.25303040450000003,
+      "stddev_ms": 0.011269731815820354,
+      "samples_ms": [
+        0.252586663,
+        0.257179737,
+        0.239820793,
+        0.24028267,
+        0.267739743,
+        0.239656523,
+        0.251203209,
+        0.253652275,
+        0.268240005,
+        0.239988267,
+        0.268630415,
+        0.253474146
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.23987164091666666,
+      "median_ms": 0.2415173275,
+      "stddev_ms": 0.01408321315373362,
+      "samples_ms": [
+        0.252874672,
+        0.227058142,
+        0.25352639,
+        0.226418123,
+        0.252412796,
+        0.252586663,
+        0.239060253,
+        0.239694923,
+        0.252859741,
+        0.243339732,
+        0.2275424,
+        0.211085856
+      ]
+    }
+  },
+  "speedup": 1.053499013893261,
+  "speedup_ci95": [
+    1.0139271618146461,
+    1.0987471578244012
+  ],
+  "elapsed_seconds": 74.02809680000064
+}

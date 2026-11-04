@@ -1,0 +1,105 @@
+{
+  "case": "conv3x3_640",
+  "family": "conv3x3",
+  "size": 640,
+  "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "c73f4535ccd9b9aa0bc0f7ec42ddffada6d944d84263fe4fa4265d3546ef6728",
+  "output_sha256": "c73f4535ccd9b9aa0bc0f7ec42ddffada6d944d84263fe4fa4265d3546ef6728",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 640,
+      "seed": 0,
+      "elements": 409600,
+      "max_error": 1.3245476626622121e-07
+    },
+    {
+      "version": "optimized",
+      "size": 640,
+      "seed": 0,
+      "elements": 409600,
+      "max_error": 1.3245476626622121e-07
+    },
+    {
+      "version": "baseline",
+      "size": 643,
+      "seed": 1,
+      "elements": 413449,
+      "max_error": 1.0596381305738589e-07
+    },
+    {
+      "version": "optimized",
+      "size": 643,
+      "seed": 1,
+      "elements": 413449,
+      "max_error": 1.0596381305738589e-07
+    },
+    {
+      "version": "baseline",
+      "size": 639,
+      "seed": 7,
+      "elements": 408321,
+      "max_error": 1.1920928966180355e-07
+    },
+    {
+      "version": "optimized",
+      "size": 639,
+      "seed": 7,
+      "elements": 408321,
+      "max_error": 1.1920928966180355e-07
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.018185866666666668,
+      "median_ms": 0.017681066,
+      "stddev_ms": 0.0011870638255920161,
+      "samples_ms": [
+        0.018130133,
+        0.019455999,
+        0.017940266,
+        0.017476266,
+        0.018281601,
+        0.021504002,
+        0.017415466,
+        0.017601067,
+        0.017681066,
+        0.017681066,
+        0.017529601,
+        0.017533867
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.018026133083333333,
+      "median_ms": 0.0176309335,
+      "stddev_ms": 0.0008821070815230851,
+      "samples_ms": [
+        0.019251199,
+        0.0176352,
+        0.018110933,
+        0.017495466,
+        0.017484801,
+        0.017626667,
+        0.017439999,
+        0.0182912,
+        0.017749334,
+        0.017476266,
+        0.020277333,
+        0.017475199
+      ]
+    }
+  },
+  "speedup": 1.008861222903154,
+  "speedup_ci95": [
+    0.9670446910845387,
+    1.0560323943488463
+  ],
+  "elapsed_seconds": 55.64736379997339
+}

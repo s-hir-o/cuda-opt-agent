@@ -1,0 +1,105 @@
+{
+  "case": "matvec_192",
+  "family": "matvec",
+  "size": 192,
+  "description": "One thread per matrix row; serial dot accumulation.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "fac94754896893803cdb0c5e3332d4d55b7b3feb785ed55fc6aacf522cd5b6d4",
+  "output_sha256": "fac94754896893803cdb0c5e3332d4d55b7b3feb785ed55fc6aacf522cd5b6d4",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 192,
+      "seed": 0,
+      "elements": 192,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 192,
+      "seed": 0,
+      "elements": 192,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 195,
+      "seed": 1,
+      "elements": 195,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 195,
+      "seed": 1,
+      "elements": 195,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 191,
+      "seed": 7,
+      "elements": 191,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 191,
+      "seed": 7,
+      "elements": 191,
+      "max_error": 0.0
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.025903111416666666,
+      "median_ms": 0.025436266,
+      "stddev_ms": 0.001272714975094114,
+      "samples_ms": [
+        0.024991998,
+        0.024949335,
+        0.027031468,
+        0.025880534,
+        0.024786133,
+        0.024829866,
+        0.024801068,
+        0.025941335,
+        0.027374933,
+        0.028672,
+        0.0266048,
+        0.024973867
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.025538133583333334,
+      "median_ms": 0.0254511995,
+      "stddev_ms": 0.0007004765522205659,
+      "samples_ms": [
+        0.024873601,
+        0.0258688,
+        0.026133332,
+        0.026350934,
+        0.025033599,
+        0.024824534,
+        0.026261333,
+        0.024914134,
+        0.024832001,
+        0.026279468,
+        0.024798933,
+        0.026286934
+      ]
+    }
+  },
+  "speedup": 1.0142914842285704,
+  "speedup_ci95": [
+    0.984907263934637,
+    1.0469857598605279
+  ],
+  "elapsed_seconds": 64.47823730000528
+}

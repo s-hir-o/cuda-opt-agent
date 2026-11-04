@@ -1,0 +1,105 @@
+{
+  "case": "saxpy_131072",
+  "family": "saxpy",
+  "size": 131072,
+  "description": "Scalar pointwise SAXPY; no explicit vectorized loads.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "1f0ca35c93769ca5d80d995ccbda74cb4220c3c0445e8419c1209bc9fdc7c4f5",
+  "output_sha256": "1f0ca35c93769ca5d80d995ccbda74cb4220c3c0445e8419c1209bc9fdc7c4f5",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 131072,
+      "seed": 0,
+      "elements": 131072,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 131072,
+      "seed": 0,
+      "elements": 131072,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 131075,
+      "seed": 1,
+      "elements": 131075,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 131075,
+      "seed": 1,
+      "elements": 131075,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 131071,
+      "seed": 7,
+      "elements": 131071,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 131071,
+      "seed": 7,
+      "elements": 131071,
+      "max_error": 0.0
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.010611733333333333,
+      "median_ms": 0.010980267,
+      "stddev_ms": 0.001172441034292621,
+      "samples_ms": [
+        0.011934933,
+        0.010130133,
+        0.010677334,
+        0.008549334,
+        0.009079467,
+        0.009415466,
+        0.0112832,
+        0.012081067,
+        0.009908267,
+        0.011434666,
+        0.011451733,
+        0.0113952
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.01050942225,
+      "median_ms": 0.0099429335,
+      "stddev_ms": 0.002032893631259063,
+      "samples_ms": [
+        0.008605867,
+        0.008328533,
+        0.010558933,
+        0.012272,
+        0.009099734,
+        0.014004266,
+        0.009326934,
+        0.012219733,
+        0.0131072,
+        0.008337067,
+        0.008769067,
+        0.011483733
+      ]
+    }
+  },
+  "speedup": 1.009735176768003,
+  "speedup_ci95": [
+    0.8936389013500002,
+    1.1387038104684097
+  ],
+  "elapsed_seconds": 70.17485019998276
+}

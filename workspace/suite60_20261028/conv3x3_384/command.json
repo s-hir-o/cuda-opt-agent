@@ -1,0 +1,17 @@
+[
+  "D:\\work\\cuda_performace analyser\\.venv\\Scripts\\python.exe",
+  "-m",
+  "cuda_opt_agent.cli.app",
+  "optimize",
+  "D:\\work\\cuda_performace analyser\\workspace\\suite60_20261028\\conv3x3_384\\input.cu",
+  "--entry-point",
+  "work",
+  "--arch",
+  "sm_75",
+  "--max-iter",
+  "18",
+  "--config",
+  "D:\\work\\cuda_performace analyser\\workspace\\suite60_20261028\\conv3x3_384\\config.yaml",
+  "--output",
+  "D:\\work\\cuda_performace analyser\\workspace\\suite60_20261028\\conv3x3_384\\output.cu"
+]

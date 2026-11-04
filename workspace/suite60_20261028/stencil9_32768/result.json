@@ -1,0 +1,105 @@
+{
+  "case": "stencil9_32768",
+  "family": "stencil9",
+  "size": 32768,
+  "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "f544e33beb856ff2c1dc26dc53c850d18f77a8cb518dd037fa3df23305b57761",
+  "output_sha256": "f544e33beb856ff2c1dc26dc53c850d18f77a8cb518dd037fa3df23305b57761",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 32768,
+      "seed": 0,
+      "elements": 32768,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 32768,
+      "seed": 0,
+      "elements": 32768,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 32771,
+      "seed": 1,
+      "elements": 32771,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 32771,
+      "seed": 1,
+      "elements": 32771,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 32767,
+      "seed": 7,
+      "elements": 32767,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 32767,
+      "seed": 7,
+      "elements": 32767,
+      "max_error": 0.0
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.010767111166666666,
+      "median_ms": 0.011125333500000001,
+      "stddev_ms": 0.0009324931527928802,
+      "samples_ms": [
+        0.011516799,
+        0.012014934,
+        0.011264,
+        0.009841067,
+        0.011264,
+        0.010016,
+        0.0104448,
+        0.011428267,
+        0.008667734,
+        0.010376533,
+        0.011384533,
+        0.010986667
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.010783999833333334,
+      "median_ms": 0.011192,
+      "stddev_ms": 0.001335808705399966,
+      "samples_ms": [
+        0.012369066,
+        0.011675733,
+        0.010065067,
+        0.0104896,
+        0.0122848,
+        0.011076267,
+        0.0115072,
+        0.010485333,
+        0.0114688,
+        0.008152533,
+        0.011307733,
+        0.008525866
+      ]
+    }
+  },
+  "speedup": 0.9984339144169434,
+  "speedup_ci95": [
+    0.9217739172162918,
+    1.0875804357263408
+  ],
+  "elapsed_seconds": 64.8094213999866
+}

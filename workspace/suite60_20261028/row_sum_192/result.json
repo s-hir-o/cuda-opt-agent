@@ -1,0 +1,14 @@
+{
+  "case": "row_sum_192",
+  "family": "row_sum",
+  "size": 192,
+  "description": "One thread per row; serial reduction with strided inter-thread reads.",
+  "status": "failed",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.025,
+  "selected_variant": "input_i4_loop_unrolling",
+  "host_contract_unchanged": false,
+  "error": "Candidate changed host harness or kernel signature",
+  "elapsed_seconds": 57.174578600010136
+}

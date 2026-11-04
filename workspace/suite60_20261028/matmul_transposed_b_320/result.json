@@ -1,0 +1,105 @@
+{
+  "case": "matmul_transposed_b_320",
+  "family": "matmul_transposed_b",
+  "size": 320,
+  "description": "Pairwise row dot products; each thread walks two rows.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "59472ddd16c36aea063ad6eff946009c98b545463c5ebacbf97c02d649487e42",
+  "output_sha256": "59472ddd16c36aea063ad6eff946009c98b545463c5ebacbf97c02d649487e42",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 320,
+      "seed": 0,
+      "elements": 102400,
+      "max_error": 1.621246337890625e-05
+    },
+    {
+      "version": "optimized",
+      "size": 320,
+      "seed": 0,
+      "elements": 102400,
+      "max_error": 1.621246337890625e-05
+    },
+    {
+      "version": "baseline",
+      "size": 323,
+      "seed": 1,
+      "elements": 104329,
+      "max_error": 1.811981201171875e-05
+    },
+    {
+      "version": "optimized",
+      "size": 323,
+      "seed": 1,
+      "elements": 104329,
+      "max_error": 1.811981201171875e-05
+    },
+    {
+      "version": "baseline",
+      "size": 319,
+      "seed": 7,
+      "elements": 101761,
+      "max_error": 1.430511474609375e-05
+    },
+    {
+      "version": "optimized",
+      "size": 319,
+      "seed": 7,
+      "elements": 101761,
+      "max_error": 1.430511474609375e-05
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.42972666758333333,
+      "median_ms": 0.427507192,
+      "stddev_ms": 0.005722426848769744,
+      "samples_ms": [
+        0.427827209,
+        0.426962107,
+        0.43920958,
+        0.42663148,
+        0.444254935,
+        0.427709877,
+        0.427031457,
+        0.427398384,
+        0.427616,
+        0.427792013,
+        0.427349359,
+        0.42693761
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.4350624855833333,
+      "median_ms": 0.4345994745,
+      "stddev_ms": 0.008227710195366517,
+      "samples_ms": [
+        0.44214505,
+        0.443814397,
+        0.427780271,
+        0.442012787,
+        0.426674157,
+        0.441418678,
+        0.445236266,
+        0.427211732,
+        0.426942915,
+        0.42752853,
+        0.442671984,
+        0.42731306
+      ]
+    }
+  },
+  "speedup": 0.9877355134565424,
+  "speedup_ci95": [
+    0.9757512836778082,
+    1.0004501544454936
+  ],
+  "elapsed_seconds": 54.31634589997702
+}

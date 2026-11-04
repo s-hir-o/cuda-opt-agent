@@ -1,0 +1,105 @@
+{
+  "case": "poly5_524288",
+  "family": "poly5",
+  "size": 524288,
+  "description": "Pointwise degree-five polynomial using a short Horner loop.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "36ff25bef6a8b7dba68f086b697da70f73c609cf953adac2802325f23bc8420f",
+  "output_sha256": "36ff25bef6a8b7dba68f086b697da70f73c609cf953adac2802325f23bc8420f",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 524288,
+      "seed": 0,
+      "elements": 524288,
+      "max_error": 6.299167472079148e-07
+    },
+    {
+      "version": "optimized",
+      "size": 524288,
+      "seed": 0,
+      "elements": 524288,
+      "max_error": 6.299167472079148e-07
+    },
+    {
+      "version": "baseline",
+      "size": 524291,
+      "seed": 1,
+      "elements": 524291,
+      "max_error": 5.405479681641623e-07
+    },
+    {
+      "version": "optimized",
+      "size": 524291,
+      "seed": 1,
+      "elements": 524291,
+      "max_error": 5.405479681641623e-07
+    },
+    {
+      "version": "baseline",
+      "size": 524287,
+      "seed": 7,
+      "elements": 524287,
+      "max_error": 6.299167472079148e-07
+    },
+    {
+      "version": "optimized",
+      "size": 524287,
+      "seed": 7,
+      "elements": 524287,
+      "max_error": 6.299167472079148e-07
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.020111555666666666,
+      "median_ms": 0.0171391995,
+      "stddev_ms": 0.008103763373738238,
+      "samples_ms": [
+        0.026692268,
+        0.014014933,
+        0.014010667,
+        0.017144533,
+        0.041437868,
+        0.01536,
+        0.017133866,
+        0.0190624,
+        0.015206399,
+        0.015534934,
+        0.027784534,
+        0.017956266
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.017398489,
+      "median_ms": 0.015434133499999999,
+      "stddev_ms": 0.005125184420182982,
+      "samples_ms": [
+        0.014472533,
+        0.013808,
+        0.017136,
+        0.014962134,
+        0.027672533,
+        0.015906133,
+        0.028398933,
+        0.013755734,
+        0.016289067,
+        0.013997867,
+        0.0148288,
+        0.017554134
+      ]
+    }
+  },
+  "speedup": 1.1559369130656498,
+  "speedup_ci95": [
+    0.8871768284430778,
+    1.5098632220365904
+  ],
+  "elapsed_seconds": 74.72725660001743
+}

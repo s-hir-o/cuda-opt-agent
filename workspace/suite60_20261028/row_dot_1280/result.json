@@ -1,0 +1,105 @@
+{
+  "case": "row_dot_1280",
+  "family": "row_dot",
+  "size": 1280,
+  "description": "Batched row dot products; serial reduction per thread.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "027c82666cb810799eeb3f709062e851e9d8a9e963fbf9d6ee41fcd2fc83c63b",
+  "output_sha256": "027c82666cb810799eeb3f709062e851e9d8a9e963fbf9d6ee41fcd2fc83c63b",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 1280,
+      "seed": 0,
+      "elements": 1280,
+      "max_error": 4.1961669921875e-05
+    },
+    {
+      "version": "optimized",
+      "size": 1280,
+      "seed": 0,
+      "elements": 1280,
+      "max_error": 4.1961669921875e-05
+    },
+    {
+      "version": "baseline",
+      "size": 1283,
+      "seed": 1,
+      "elements": 1283,
+      "max_error": 3.24249267578125e-05
+    },
+    {
+      "version": "optimized",
+      "size": 1283,
+      "seed": 1,
+      "elements": 1283,
+      "max_error": 3.24249267578125e-05
+    },
+    {
+      "version": "baseline",
+      "size": 1279,
+      "seed": 7,
+      "elements": 1279,
+      "max_error": 3.719329833984375e-05
+    },
+    {
+      "version": "optimized",
+      "size": 1279,
+      "seed": 7,
+      "elements": 1279,
+      "max_error": 3.719329833984375e-05
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.30509599291666667,
+      "median_ms": 0.30498824999999996,
+      "stddev_ms": 0.0003374239171510234,
+      "samples_ms": [
+        0.305425078,
+        0.305646926,
+        0.304947197,
+        0.305012256,
+        0.304728538,
+        0.304682672,
+        0.304876804,
+        0.304964244,
+        0.305076271,
+        0.305643708,
+        0.305337578,
+        0.304810643
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.305297869,
+      "median_ms": 0.30522188549999996,
+      "stddev_ms": 0.00040661987258685183,
+      "samples_ms": [
+        0.305588275,
+        0.306219727,
+        0.305276811,
+        0.305176556,
+        0.30476585,
+        0.305823982,
+        0.305356801,
+        0.305015475,
+        0.305083722,
+        0.305267215,
+        0.304967463,
+        0.305032551
+      ]
+    }
+  },
+  "speedup": 0.9993387569851222,
+  "speedup_ci95": [
+    0.9983904396458726,
+    1.0002760823812937
+  ],
+  "elapsed_seconds": 71.4432127000182
+}

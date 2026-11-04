@@ -1,0 +1,105 @@
+{
+  "case": "conv3x3_1280",
+  "family": "conv3x3",
+  "size": 1280,
+  "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "e223837c1d7fe208a7111af84d1e72959ff5d9ddfe3bb513cc04d9009d09217b",
+  "output_sha256": "e223837c1d7fe208a7111af84d1e72959ff5d9ddfe3bb513cc04d9009d09217b",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 1280,
+      "seed": 0,
+      "elements": 1638400,
+      "max_error": 1.1920928966180355e-07
+    },
+    {
+      "version": "optimized",
+      "size": 1280,
+      "seed": 0,
+      "elements": 1638400,
+      "max_error": 1.1920928966180355e-07
+    },
+    {
+      "version": "baseline",
+      "size": 1283,
+      "seed": 1,
+      "elements": 1646089,
+      "max_error": 1.1920928977282585e-07
+    },
+    {
+      "version": "optimized",
+      "size": 1283,
+      "seed": 1,
+      "elements": 1646089,
+      "max_error": 1.1920928977282585e-07
+    },
+    {
+      "version": "baseline",
+      "size": 1279,
+      "seed": 7,
+      "elements": 1635841,
+      "max_error": 1.2583202779747893e-07
+    },
+    {
+      "version": "optimized",
+      "size": 1279,
+      "seed": 7,
+      "elements": 1635841,
+      "max_error": 1.2583202779747893e-07
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.069345424,
+      "median_ms": 0.0692784005,
+      "stddev_ms": 0.00022789174583919767,
+      "samples_ms": [
+        0.069278933,
+        0.069282137,
+        0.069222406,
+        0.0699744,
+        0.069227733,
+        0.069277868,
+        0.069102928,
+        0.069223471,
+        0.069549873,
+        0.069284268,
+        0.069276802,
+        0.069444269
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.06926853341666667,
+      "median_ms": 0.0692826695,
+      "stddev_ms": 0.00010261460888946534,
+      "samples_ms": [
+        0.069244795,
+        0.069281071,
+        0.069099739,
+        0.069276802,
+        0.069230929,
+        0.069284268,
+        0.069287464,
+        0.069286399,
+        0.0694272,
+        0.069290668,
+        0.0694272,
+        0.069085866
+      ]
+    }
+  },
+  "speedup": 1.0011100362537029,
+  "speedup_ci95": [
+    0.9994151840021847,
+    1.00330049753929
+  ],
+  "elapsed_seconds": 55.30312139997841
+}

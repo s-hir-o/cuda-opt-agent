@@ -1,0 +1,105 @@
+{
+  "case": "transpose_896",
+  "family": "transpose",
+  "size": 896,
+  "description": "Direct global-memory transpose without a shared-memory tile.",
+  "status": "unchanged",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.0,
+  "selected_variant": "None",
+  "host_contract_unchanged": true,
+  "input_sha256": "8bf40fbfdc95d51961a7941ad6d29122d237419b0765f65bc7861d917691956f",
+  "output_sha256": "8bf40fbfdc95d51961a7941ad6d29122d237419b0765f65bc7861d917691956f",
+  "source_changed": false,
+  "cpu_checks": [
+    {
+      "version": "baseline",
+      "size": 896,
+      "seed": 0,
+      "elements": 802816,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 896,
+      "seed": 0,
+      "elements": 802816,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 899,
+      "seed": 1,
+      "elements": 808201,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 899,
+      "seed": 1,
+      "elements": 808201,
+      "max_error": 0.0
+    },
+    {
+      "version": "baseline",
+      "size": 895,
+      "seed": 7,
+      "elements": 801025,
+      "max_error": 0.0
+    },
+    {
+      "version": "optimized",
+      "size": 895,
+      "seed": 7,
+      "elements": 801025,
+      "max_error": 0.0
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "mean_ms": 0.020590933166666665,
+      "median_ms": 0.0203194665,
+      "stddev_ms": 0.0005422011681699691,
+      "samples_ms": [
+        0.020548265,
+        0.020953599,
+        0.020295467,
+        0.021489065,
+        0.021504002,
+        0.0200704,
+        0.021174399,
+        0.020116268,
+        0.020112,
+        0.020209067,
+        0.0202752,
+        0.020343466
+      ]
+    },
+    "optimized": {
+      "mean_ms": 0.021161777833333333,
+      "median_ms": 0.021343467499999998,
+      "stddev_ms": 0.0008633818673370051,
+      "samples_ms": [
+        0.020467199,
+        0.021421868,
+        0.021838933,
+        0.021638399,
+        0.020206934,
+        0.022788266,
+        0.021265067,
+        0.0220352,
+        0.020263467,
+        0.020043733,
+        0.020478934,
+        0.021493334
+      ]
+    }
+  },
+  "speedup": 0.9730247301922105,
+  "speedup_ci95": [
+    0.9475182087124787,
+    0.9992531661525251
+  ],
+  "elapsed_seconds": 53.53791510002338
+}

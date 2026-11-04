@@ -1,0 +1,362 @@
+[
+  {
+    "case": "matmul_96",
+    "family": "matmul",
+    "size": 96,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling."
+  },
+  {
+    "case": "matmul_192",
+    "family": "matmul",
+    "size": 192,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling."
+  },
+  {
+    "case": "matmul_320",
+    "family": "matmul",
+    "size": 320,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling."
+  },
+  {
+    "case": "matmul_448",
+    "family": "matmul",
+    "size": 448,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling."
+  },
+  {
+    "case": "matmul_640",
+    "family": "matmul",
+    "size": 640,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling."
+  },
+  {
+    "case": "matmul_transposed_b_96",
+    "family": "matmul_transposed_b",
+    "size": 96,
+    "description": "Pairwise row dot products; each thread walks two rows."
+  },
+  {
+    "case": "matmul_transposed_b_192",
+    "family": "matmul_transposed_b",
+    "size": 192,
+    "description": "Pairwise row dot products; each thread walks two rows."
+  },
+  {
+    "case": "matmul_transposed_b_320",
+    "family": "matmul_transposed_b",
+    "size": 320,
+    "description": "Pairwise row dot products; each thread walks two rows."
+  },
+  {
+    "case": "matmul_transposed_b_448",
+    "family": "matmul_transposed_b",
+    "size": 448,
+    "description": "Pairwise row dot products; each thread walks two rows."
+  },
+  {
+    "case": "matmul_transposed_b_640",
+    "family": "matmul_transposed_b",
+    "size": 640,
+    "description": "Pairwise row dot products; each thread walks two rows."
+  },
+  {
+    "case": "matvec_192",
+    "family": "matvec",
+    "size": 192,
+    "description": "One thread per matrix row; serial dot accumulation."
+  },
+  {
+    "case": "matvec_384",
+    "family": "matvec",
+    "size": 384,
+    "description": "One thread per matrix row; serial dot accumulation."
+  },
+  {
+    "case": "matvec_640",
+    "family": "matvec",
+    "size": 640,
+    "description": "One thread per matrix row; serial dot accumulation."
+  },
+  {
+    "case": "matvec_896",
+    "family": "matvec",
+    "size": 896,
+    "description": "One thread per matrix row; serial dot accumulation."
+  },
+  {
+    "case": "matvec_1280",
+    "family": "matvec",
+    "size": 1280,
+    "description": "One thread per matrix row; serial dot accumulation."
+  },
+  {
+    "case": "row_sum_192",
+    "family": "row_sum",
+    "size": 192,
+    "description": "One thread per row; serial reduction with strided inter-thread reads."
+  },
+  {
+    "case": "row_sum_384",
+    "family": "row_sum",
+    "size": 384,
+    "description": "One thread per row; serial reduction with strided inter-thread reads."
+  },
+  {
+    "case": "row_sum_640",
+    "family": "row_sum",
+    "size": 640,
+    "description": "One thread per row; serial reduction with strided inter-thread reads."
+  },
+  {
+    "case": "row_sum_896",
+    "family": "row_sum",
+    "size": 896,
+    "description": "One thread per row; serial reduction with strided inter-thread reads."
+  },
+  {
+    "case": "row_sum_1280",
+    "family": "row_sum",
+    "size": 1280,
+    "description": "One thread per row; serial reduction with strided inter-thread reads."
+  },
+  {
+    "case": "row_dot_192",
+    "family": "row_dot",
+    "size": 192,
+    "description": "Batched row dot products; serial reduction per thread."
+  },
+  {
+    "case": "row_dot_384",
+    "family": "row_dot",
+    "size": 384,
+    "description": "Batched row dot products; serial reduction per thread."
+  },
+  {
+    "case": "row_dot_640",
+    "family": "row_dot",
+    "size": 640,
+    "description": "Batched row dot products; serial reduction per thread."
+  },
+  {
+    "case": "row_dot_896",
+    "family": "row_dot",
+    "size": 896,
+    "description": "Batched row dot products; serial reduction per thread."
+  },
+  {
+    "case": "row_dot_1280",
+    "family": "row_dot",
+    "size": 1280,
+    "description": "Batched row dot products; serial reduction per thread."
+  },
+  {
+    "case": "row_max_192",
+    "family": "row_max",
+    "size": 192,
+    "description": "One thread per row; serial maximum reduction."
+  },
+  {
+    "case": "row_max_384",
+    "family": "row_max",
+    "size": 384,
+    "description": "One thread per row; serial maximum reduction."
+  },
+  {
+    "case": "row_max_640",
+    "family": "row_max",
+    "size": 640,
+    "description": "One thread per row; serial maximum reduction."
+  },
+  {
+    "case": "row_max_896",
+    "family": "row_max",
+    "size": 896,
+    "description": "One thread per row; serial maximum reduction."
+  },
+  {
+    "case": "row_max_1280",
+    "family": "row_max",
+    "size": 1280,
+    "description": "One thread per row; serial maximum reduction."
+  },
+  {
+    "case": "transpose_192",
+    "family": "transpose",
+    "size": 192,
+    "description": "Direct global-memory transpose without a shared-memory tile."
+  },
+  {
+    "case": "transpose_384",
+    "family": "transpose",
+    "size": 384,
+    "description": "Direct global-memory transpose without a shared-memory tile."
+  },
+  {
+    "case": "transpose_640",
+    "family": "transpose",
+    "size": 640,
+    "description": "Direct global-memory transpose without a shared-memory tile."
+  },
+  {
+    "case": "transpose_896",
+    "family": "transpose",
+    "size": 896,
+    "description": "Direct global-memory transpose without a shared-memory tile."
+  },
+  {
+    "case": "transpose_1280",
+    "family": "transpose",
+    "size": 1280,
+    "description": "Direct global-memory transpose without a shared-memory tile."
+  },
+  {
+    "case": "stencil9_8192",
+    "family": "stencil9",
+    "size": 8192,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing."
+  },
+  {
+    "case": "stencil9_32768",
+    "family": "stencil9",
+    "size": 32768,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing."
+  },
+  {
+    "case": "stencil9_131072",
+    "family": "stencil9",
+    "size": 131072,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing."
+  },
+  {
+    "case": "stencil9_524288",
+    "family": "stencil9",
+    "size": 524288,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing."
+  },
+  {
+    "case": "stencil9_2097152",
+    "family": "stencil9",
+    "size": 2097152,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing."
+  },
+  {
+    "case": "conv3x3_192",
+    "family": "conv3x3",
+    "size": 192,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads."
+  },
+  {
+    "case": "conv3x3_384",
+    "family": "conv3x3",
+    "size": 384,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads."
+  },
+  {
+    "case": "conv3x3_640",
+    "family": "conv3x3",
+    "size": 640,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads."
+  },
+  {
+    "case": "conv3x3_896",
+    "family": "conv3x3",
+    "size": 896,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads."
+  },
+  {
+    "case": "conv3x3_1280",
+    "family": "conv3x3",
+    "size": 1280,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads."
+  },
+  {
+    "case": "saxpy_8192",
+    "family": "saxpy",
+    "size": 8192,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads."
+  },
+  {
+    "case": "saxpy_32768",
+    "family": "saxpy",
+    "size": 32768,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads."
+  },
+  {
+    "case": "saxpy_131072",
+    "family": "saxpy",
+    "size": 131072,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads."
+  },
+  {
+    "case": "saxpy_524288",
+    "family": "saxpy",
+    "size": 524288,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads."
+  },
+  {
+    "case": "saxpy_2097152",
+    "family": "saxpy",
+    "size": 2097152,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads."
+  },
+  {
+    "case": "poly5_8192",
+    "family": "poly5",
+    "size": 8192,
+    "description": "Pointwise degree-five polynomial using a short Horner loop."
+  },
+  {
+    "case": "poly5_32768",
+    "family": "poly5",
+    "size": 32768,
+    "description": "Pointwise degree-five polynomial using a short Horner loop."
+  },
+  {
+    "case": "poly5_131072",
+    "family": "poly5",
+    "size": 131072,
+    "description": "Pointwise degree-five polynomial using a short Horner loop."
+  },
+  {
+    "case": "poly5_524288",
+    "family": "poly5",
+    "size": 524288,
+    "description": "Pointwise degree-five polynomial using a short Horner loop."
+  },
+  {
+    "case": "poly5_2097152",
+    "family": "poly5",
+    "size": 2097152,
+    "description": "Pointwise degree-five polynomial using a short Horner loop."
+  },
+  {
+    "case": "row_softmax_192",
+    "family": "row_softmax",
+    "size": 192,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row."
+  },
+  {
+    "case": "row_softmax_384",
+    "family": "row_softmax",
+    "size": 384,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row."
+  },
+  {
+    "case": "row_softmax_640",
+    "family": "row_softmax",
+    "size": 640,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row."
+  },
+  {
+    "case": "row_softmax_896",
+    "family": "row_softmax",
+    "size": 896,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row."
+  },
+  {
+    "case": "row_softmax_1280",
+    "family": "row_softmax",
+    "size": 1280,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row."
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "case": "transpose_192",
+  "family": "transpose",
+  "size": 192,
+  "description": "Direct global-memory transpose without a shared-memory tile.",
+  "status": "failed",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.161,
+  "selected_variant": "input_i6_loop_unrolling",
+  "host_contract_unchanged": false,
+  "error": "Candidate changed host harness or kernel signature",
+  "elapsed_seconds": 41.46718149998924
+}

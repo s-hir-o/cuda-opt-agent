@@ -1,0 +1,14 @@
+{
+  "case": "stencil9_131072",
+  "family": "stencil9",
+  "size": 131072,
+  "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+  "status": "failed",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.153,
+  "selected_variant": "input_i6_loop_unrolling",
+  "host_contract_unchanged": false,
+  "error": "Candidate changed host harness or kernel signature",
+  "elapsed_seconds": 54.94937970000319
+}

@@ -1,0 +1,14 @@
+{
+  "case": "row_softmax_896",
+  "family": "row_softmax",
+  "size": 896,
+  "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+  "status": "failed",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.017,
+  "selected_variant": "input_i5_loop_unrolling",
+  "host_contract_unchanged": false,
+  "error": "Candidate changed host harness or kernel signature",
+  "elapsed_seconds": 69.10693740000715
+}

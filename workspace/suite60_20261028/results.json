@@ -1,0 +1,5392 @@
+[
+  {
+    "case": "matmul_96",
+    "family": "matmul",
+    "size": 96,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling.",
+    "status": "improved",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.099,
+    "selected_variant": "input_i9_shared_memory_tiling",
+    "host_contract_unchanged": true,
+    "input_sha256": "06f68a339e948f6dd24e51b896d59696bf2c6ce0b1c632e18cb9c9b4e725c6c0",
+    "output_sha256": "8849a5b3357cccad128ed8e025222bc8f6c4c76028007c99dcb7a771c2ddc467",
+    "source_changed": true,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 96,
+        "seed": 0,
+        "elements": 9216,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 96,
+        "seed": 0,
+        "elements": 9216,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 99,
+        "seed": 1,
+        "elements": 9801,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 99,
+        "seed": 1,
+        "elements": 9801,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 95,
+        "seed": 7,
+        "elements": 9025,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 95,
+        "seed": 7,
+        "elements": 9025,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.0129283555,
+        "median_ms": 0.012014933500000002,
+        "stddev_ms": 0.003583262383172085,
+        "samples_ms": [
+          0.011195733,
+          0.0118784,
+          0.011605334,
+          0.012151467,
+          0.011127467,
+          0.0117664,
+          0.0127168,
+          0.012414933,
+          0.012552533,
+          0.012670933,
+          0.010922667,
+          0.024137599
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.011099022083333333,
+        "median_ms": 0.010810666,
+        "stddev_ms": 0.0008913312921202814,
+        "samples_ms": [
+          0.009842133,
+          0.010407466,
+          0.012017067,
+          0.011810133,
+          0.012144,
+          0.011945601,
+          0.010205867,
+          0.010464,
+          0.010856533,
+          0.010362667,
+          0.010764799,
+          0.012367999
+        ]
+      }
+    },
+    "speedup": 1.1648193329945398,
+    "speedup_ci95": [
+      1.032444812265646,
+      1.3803225875762064
+    ],
+    "elapsed_seconds": 90.05936929999734
+  },
+  {
+    "case": "matmul_192",
+    "family": "matmul",
+    "size": 192,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling.",
+    "status": "improved",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.287,
+    "selected_variant": "input_i9_shared_memory_tiling",
+    "host_contract_unchanged": true,
+    "input_sha256": "98ea0e8cf941792f767d63b1420b29c18f504e197b6e6eb81b138c38990cbce8",
+    "output_sha256": "77ab8017dda403ecb2cc99899aca39b135c0f4c2541c6fa1a022679fa647df16",
+    "source_changed": true,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 5.7220458984375e-06
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 5.7220458984375e-06
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 4.76837158203125e-06
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 4.76837158203125e-06
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 4.76837158203125e-06
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 4.76837158203125e-06
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.02558257766666667,
+        "median_ms": 0.025229333,
+        "stddev_ms": 0.0009486157833102577,
+        "samples_ms": [
+          0.0247168,
+          0.025804799,
+          0.024763733,
+          0.0247648,
+          0.024849067,
+          0.026151467,
+          0.024807466,
+          0.026658135,
+          0.025599999,
+          0.027533866,
+          0.026482133,
+          0.024858667
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.0189128,
+        "median_ms": 0.018804266,
+        "stddev_ms": 0.0004334909045368566,
+        "samples_ms": [
+          0.019492267,
+          0.019001599,
+          0.018541867,
+          0.018934401,
+          0.018497067,
+          0.019109333,
+          0.018703999,
+          0.019939201,
+          0.018904533,
+          0.018587735,
+          0.0186368,
+          0.018604798
+        ]
+      }
+    },
+    "speedup": 1.3526594510948493,
+    "speedup_ci95": [
+      1.3220512141080492,
+      1.385500522785676
+    ],
+    "elapsed_seconds": 92.11501899998984
+  },
+  {
+    "case": "matmul_320",
+    "family": "matmul",
+    "size": 320,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling.",
+    "status": "improved",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.478,
+    "selected_variant": "input_i9_shared_memory_tiling",
+    "host_contract_unchanged": true,
+    "input_sha256": "cfda58c420aeb7e87ec7b4290574bf287406dabe3717882d98a3e199cf4d2806",
+    "output_sha256": "3ad38bb1fd2b36465e4feca7ebbbf4a697c2ded57d93a24c90e902cef5ea742a",
+    "source_changed": true,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 320,
+        "seed": 0,
+        "elements": 102400,
+        "max_error": 1.33514404296875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 320,
+        "seed": 0,
+        "elements": 102400,
+        "max_error": 1.33514404296875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 323,
+        "seed": 1,
+        "elements": 104329,
+        "max_error": 1.52587890625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 323,
+        "seed": 1,
+        "elements": 104329,
+        "max_error": 1.52587890625e-05
+      },
+      {
+        "version": "baseline",
+        "size": 319,
+        "seed": 7,
+        "elements": 101761,
+        "max_error": 1.239776611328125e-05
+      },
+      {
+        "version": "optimized",
+        "size": 319,
+        "seed": 7,
+        "elements": 101761,
+        "max_error": 1.239776611328125e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.08039626533333333,
+        "median_ms": 0.0803706645,
+        "stddev_ms": 0.00010379919640460767,
+        "samples_ms": [
+          0.080321066,
+          0.080248527,
+          0.080437332,
+          0.080366932,
+          0.080520533,
+          0.0802944,
+          0.080331728,
+          0.08043094,
+          0.080355197,
+          0.080374397,
+          0.080449067,
+          0.080625065
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.054345866666666666,
+        "median_ms": 0.0543072,
+        "stddev_ms": 0.0001292573910229529,
+        "samples_ms": [
+          0.054601602,
+          0.054199465,
+          0.05424853,
+          0.054444801,
+          0.054274134,
+          0.054340266,
+          0.054242134,
+          0.0542688,
+          0.054228265,
+          0.054408535,
+          0.054353066,
+          0.054540802
+        ]
+      }
+    },
+    "speedup": 1.4793446174379405,
+    "speedup_ci95": [
+      1.4770940074697974,
+      1.4814007337874435
+    ],
+    "elapsed_seconds": 58.8021274000057
+  },
+  {
+    "case": "matmul_448",
+    "family": "matmul",
+    "size": 448,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling.",
+    "status": "improved",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.538,
+    "selected_variant": "input_i9_shared_memory_tiling",
+    "host_contract_unchanged": true,
+    "input_sha256": "b12e60cd57ab34a741510fa93cbd1f39e0994712934d5e2b531cfc10179c29fb",
+    "output_sha256": "644e5545c953ff6c7cb5eb914a4fcdc28b57535531bc464632fcd554dfd85a61",
+    "source_changed": true,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 448,
+        "seed": 0,
+        "elements": 200704,
+        "max_error": 2.193450927734375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 448,
+        "seed": 0,
+        "elements": 200704,
+        "max_error": 2.193450927734375e-05
+      },
+      {
+        "version": "baseline",
+        "size": 451,
+        "seed": 1,
+        "elements": 203401,
+        "max_error": 2.574920654296875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 451,
+        "seed": 1,
+        "elements": 203401,
+        "max_error": 2.574920654296875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 447,
+        "seed": 7,
+        "elements": 199809,
+        "max_error": 2.09808349609375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 447,
+        "seed": 7,
+        "elements": 199809,
+        "max_error": 2.09808349609375e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.210328713,
+        "median_ms": 0.2103274685,
+        "stddev_ms": 0.0002936597845404852,
+        "samples_ms": [
+          0.210328534,
+          0.210360527,
+          0.210124791,
+          0.210098132,
+          0.209952012,
+          0.21026133,
+          0.211012274,
+          0.210071474,
+          0.210326403,
+          0.210744545,
+          0.210329592,
+          0.210334942
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.13691111175,
+        "median_ms": 0.13677066599999999,
+        "stddev_ms": 0.00035272071045700236,
+        "samples_ms": [
+          0.137311995,
+          0.136734933,
+          0.136692271,
+          0.137489066,
+          0.137258679,
+          0.136601612,
+          0.136806399,
+          0.136603743,
+          0.136548266,
+          0.137235194,
+          0.137158394,
+          0.136492789
+        ]
+      }
+    },
+    "speedup": 1.5362428243520563,
+    "speedup_ci95": [
+      1.5337877678392104,
+      1.5386729185596382
+    ],
+    "elapsed_seconds": 60.45357690000674
+  },
+  {
+    "case": "matmul_640",
+    "family": "matmul",
+    "size": 640,
+    "description": "Direct one-thread-per-output GEMM; no shared-memory tiling.",
+    "status": "improved",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.589,
+    "selected_variant": "input_i9_shared_memory_tiling",
+    "host_contract_unchanged": true,
+    "input_sha256": "c1b2d45682c70ce56bc29e585786246adfd534d11e90f3e36f2d497dd03a59d5",
+    "output_sha256": "ddc9a95c2f3bdfa9a7e8f33cf24f3f93ace9ba3bf9862f4d68b10b2874d2245b",
+    "source_changed": true,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 3.337860107421875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 3.337860107421875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 3.62396240234375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 3.62396240234375e-05
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 4.100799560546875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 4.100799560546875e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.6089708506666667,
+        "median_ms": 0.614682674,
+        "stddev_ms": 0.008389485289325342,
+        "samples_ms": [
+          0.614766955,
+          0.61517334,
+          0.615014374,
+          0.614809632,
+          0.59797442,
+          0.615561604,
+          0.610570669,
+          0.597488046,
+          0.614598393,
+          0.597060263,
+          0.616084278,
+          0.598548234
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.3843007113333333,
+        "median_ms": 0.37652640049999997,
+        "stddev_ms": 0.017897330877572587,
+        "samples_ms": [
+          0.376341343,
+          0.376005322,
+          0.376675189,
+          0.436770111,
+          0.376377612,
+          0.37589547,
+          0.375921071,
+          0.394301862,
+          0.393898666,
+          0.376850128,
+          0.376695484,
+          0.375876278
+        ]
+      }
+    },
+    "speedup": 1.5846206699796082,
+    "speedup_ci95": [
+      1.5383702826625805,
+      1.6194366326515455
+    ],
+    "elapsed_seconds": 64.70301179998205
+  },
+  {
+    "case": "matmul_transposed_b_96",
+    "family": "matmul_transposed_b",
+    "size": 96,
+    "description": "Pairwise row dot products; each thread walks two rows.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.021,
+    "selected_variant": "input_i4_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 43.030045899999095
+  },
+  {
+    "case": "matmul_transposed_b_192",
+    "family": "matmul_transposed_b",
+    "size": 192,
+    "description": "Pairwise row dot products; each thread walks two rows.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "7e2b4bf7106d695fc7ec50556ccf0a683d2bacf38d173f8dd86df0fc27ffbb9d",
+    "output_sha256": "7e2b4bf7106d695fc7ec50556ccf0a683d2bacf38d173f8dd86df0fc27ffbb9d",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 3.814697265625e-06
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 3.814697265625e-06
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 5.7220458984375e-06
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 5.7220458984375e-06
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 3.814697265625e-06
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 3.814697265625e-06
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.11289422341666666,
+        "median_ms": 0.11168427,
+        "stddev_ms": 0.003883864391848651,
+        "samples_ms": [
+          0.11236693,
+          0.11168427,
+          0.111674666,
+          0.111678936,
+          0.111664005,
+          0.111692801,
+          0.111616001,
+          0.125206396,
+          0.112093873,
+          0.111752532,
+          0.11168427,
+          0.111616001
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.11308177858333333,
+        "median_ms": 0.11176799949999999,
+        "stddev_ms": 0.003987291278499603,
+        "samples_ms": [
+          0.111674666,
+          0.125690669,
+          0.112476803,
+          0.111706667,
+          0.112843737,
+          0.111955196,
+          0.111752532,
+          0.111783467,
+          0.11170347,
+          0.111752532,
+          0.11168427,
+          0.111957334
+        ]
+      }
+    },
+    "speedup": 0.9983414200853902,
+    "speedup_ci95": [
+      0.9692997423452426,
+      1.027513444207356
+    ],
+    "elapsed_seconds": 53.021771500003524
+  },
+  {
+    "case": "matmul_transposed_b_320",
+    "family": "matmul_transposed_b",
+    "size": 320,
+    "description": "Pairwise row dot products; each thread walks two rows.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "59472ddd16c36aea063ad6eff946009c98b545463c5ebacbf97c02d649487e42",
+    "output_sha256": "59472ddd16c36aea063ad6eff946009c98b545463c5ebacbf97c02d649487e42",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 320,
+        "seed": 0,
+        "elements": 102400,
+        "max_error": 1.621246337890625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 320,
+        "seed": 0,
+        "elements": 102400,
+        "max_error": 1.621246337890625e-05
+      },
+      {
+        "version": "baseline",
+        "size": 323,
+        "seed": 1,
+        "elements": 104329,
+        "max_error": 1.811981201171875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 323,
+        "seed": 1,
+        "elements": 104329,
+        "max_error": 1.811981201171875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 319,
+        "seed": 7,
+        "elements": 101761,
+        "max_error": 1.430511474609375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 319,
+        "seed": 7,
+        "elements": 101761,
+        "max_error": 1.430511474609375e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.42972666758333333,
+        "median_ms": 0.427507192,
+        "stddev_ms": 0.005722426848769744,
+        "samples_ms": [
+          0.427827209,
+          0.426962107,
+          0.43920958,
+          0.42663148,
+          0.444254935,
+          0.427709877,
+          0.427031457,
+          0.427398384,
+          0.427616,
+          0.427792013,
+          0.427349359,
+          0.42693761
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.4350624855833333,
+        "median_ms": 0.4345994745,
+        "stddev_ms": 0.008227710195366517,
+        "samples_ms": [
+          0.44214505,
+          0.443814397,
+          0.427780271,
+          0.442012787,
+          0.426674157,
+          0.441418678,
+          0.445236266,
+          0.427211732,
+          0.426942915,
+          0.42752853,
+          0.442671984,
+          0.42731306
+        ]
+      }
+    },
+    "speedup": 0.9877355134565424,
+    "speedup_ci95": [
+      0.9757512836778082,
+      1.0004501544454936
+    ],
+    "elapsed_seconds": 54.31634589997702
+  },
+  {
+    "case": "matmul_transposed_b_448",
+    "family": "matmul_transposed_b",
+    "size": 448,
+    "description": "Pairwise row dot products; each thread walks two rows.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.015,
+    "selected_variant": "input_i6_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 46.40682090001064
+  },
+  {
+    "case": "matmul_transposed_b_640",
+    "family": "matmul_transposed_b",
+    "size": 640,
+    "description": "Pairwise row dot products; each thread walks two rows.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "72c278749bd91462ef28b2b36840e5e770082d06a41c28d2c056d8563c386bc9",
+    "output_sha256": "72c278749bd91462ef28b2b36840e5e770082d06a41c28d2c056d8563c386bc9",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 3.910064697265625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 3.910064697265625e-05
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 3.814697265625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 3.814697265625e-05
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 3.147125244140625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 3.147125244140625e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 2.35451302925,
+        "median_ms": 2.3036708829999997,
+        "stddev_ms": 0.17594908076122395,
+        "samples_ms": [
+          2.913225651,
+          2.30427289,
+          2.303915739,
+          2.304068327,
+          2.303438902,
+          2.303249121,
+          2.303517818,
+          2.303694963,
+          2.303646803,
+          2.303578615,
+          2.303581715,
+          2.303965807
+        ]
+      },
+      "optimized": {
+        "mean_ms": 2.33990951375,
+        "median_ms": 2.3038762805,
+        "stddev_ms": 0.13010170298548962,
+        "samples_ms": [
+          2.7527318,
+          2.286633492,
+          2.304014921,
+          2.303881645,
+          2.304611206,
+          2.303599119,
+          2.30522871,
+          2.304019213,
+          2.30360651,
+          2.303246737,
+          2.303870916,
+          2.303469896
+        ]
+      }
+    },
+    "speedup": 1.006241059927397,
+    "speedup_ci95": [
+      0.9596966959640221,
+      1.066105592922748
+    ],
+    "elapsed_seconds": 63.20960999999079
+  },
+  {
+    "case": "matvec_192",
+    "family": "matvec",
+    "size": 192,
+    "description": "One thread per matrix row; serial dot accumulation.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "fac94754896893803cdb0c5e3332d4d55b7b3feb785ed55fc6aacf522cd5b6d4",
+    "output_sha256": "fac94754896893803cdb0c5e3332d4d55b7b3feb785ed55fc6aacf522cd5b6d4",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 192,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 192,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 195,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 195,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 191,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 191,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.025903111416666666,
+        "median_ms": 0.025436266,
+        "stddev_ms": 0.001272714975094114,
+        "samples_ms": [
+          0.024991998,
+          0.024949335,
+          0.027031468,
+          0.025880534,
+          0.024786133,
+          0.024829866,
+          0.024801068,
+          0.025941335,
+          0.027374933,
+          0.028672,
+          0.0266048,
+          0.024973867
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.025538133583333334,
+        "median_ms": 0.0254511995,
+        "stddev_ms": 0.0007004765522205659,
+        "samples_ms": [
+          0.024873601,
+          0.0258688,
+          0.026133332,
+          0.026350934,
+          0.025033599,
+          0.024824534,
+          0.026261333,
+          0.024914134,
+          0.024832001,
+          0.026279468,
+          0.024798933,
+          0.026286934
+        ]
+      }
+    },
+    "speedup": 1.0142914842285704,
+    "speedup_ci95": [
+      0.984907263934637,
+      1.0469857598605279
+    ],
+    "elapsed_seconds": 64.47823730000528
+  },
+  {
+    "case": "matvec_384",
+    "family": "matvec",
+    "size": 384,
+    "description": "One thread per matrix row; serial dot accumulation.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "22a76b2eecccb292825a392e18c086873fdabc70bca0da65c3687d5b22a69967",
+    "output_sha256": "22a76b2eecccb292825a392e18c086873fdabc70bca0da65c3687d5b22a69967",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 6.67572021484375e-06
+      },
+      {
+        "version": "optimized",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 6.67572021484375e-06
+      },
+      {
+        "version": "baseline",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 2.86102294921875e-06
+      },
+      {
+        "version": "optimized",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 2.86102294921875e-06
+      },
+      {
+        "version": "baseline",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 3.814697265625e-06
+      },
+      {
+        "version": "optimized",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 3.814697265625e-06
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.04690888891666667,
+        "median_ms": 0.046834134,
+        "stddev_ms": 0.00026400774847976625,
+        "samples_ms": [
+          0.046961065,
+          0.046740267,
+          0.047673598,
+          0.046694402,
+          0.046723198,
+          0.046830934,
+          0.046807468,
+          0.046964269,
+          0.046987731,
+          0.046837334,
+          0.046967465,
+          0.046718936
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.046901689499999996,
+        "median_ms": 0.0468005335,
+        "stddev_ms": 0.00029473814861562107,
+        "samples_ms": [
+          0.046770133,
+          0.046755198,
+          0.046958935,
+          0.046714667,
+          0.046944,
+          0.046716802,
+          0.046725333,
+          0.046891734,
+          0.046746667,
+          0.046830934,
+          0.046983469,
+          0.047782402
+        ]
+      }
+    },
+    "speedup": 1.0001535001562507,
+    "speedup_ci95": [
+      0.9952884068354383,
+      1.0045940848839643
+    ],
+    "elapsed_seconds": 64.95727590000024
+  },
+  {
+    "case": "matvec_640",
+    "family": "matvec",
+    "size": 640,
+    "description": "One thread per matrix row; serial dot accumulation.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "4a336594c254c9df071b6b1a5cd0fe5be95d57d11baee3dbc965441180bb21d6",
+    "output_sha256": "4a336594c254c9df071b6b1a5cd0fe5be95d57d11baee3dbc965441180bb21d6",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 1.239776611328125e-05
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 1.239776611328125e-05
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 1.71661376953125e-05
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 1.71661376953125e-05
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 1.430511474609375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 1.430511474609375e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.08071831258333334,
+        "median_ms": 0.08074026549999999,
+        "stddev_ms": 0.0002490410144196617,
+        "samples_ms": [
+          0.080722131,
+          0.080824532,
+          0.080787197,
+          0.080418132,
+          0.0807584,
+          0.080779739,
+          0.080559999,
+          0.080759473,
+          0.081377067,
+          0.080636807,
+          0.080554672,
+          0.080441602
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.08073804533333333,
+        "median_ms": 0.0807290675,
+        "stddev_ms": 0.00022176394875564513,
+        "samples_ms": [
+          0.080678396,
+          0.080738135,
+          0.080827735,
+          0.080710404,
+          0.081314132,
+          0.080827735,
+          0.080595203,
+          0.080780797,
+          0.080759473,
+          0.080486402,
+          0.08072,
+          0.080418132
+        ]
+      }
+    },
+    "speedup": 0.9997555953959683,
+    "speedup_ci95": [
+      0.9975677632520802,
+      1.002075732462589
+    ],
+    "elapsed_seconds": 67.50993580001523
+  },
+  {
+    "case": "matvec_896",
+    "family": "matvec",
+    "size": 896,
+    "description": "One thread per matrix row; serial dot accumulation.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "a4292cff1e8e9ec7912cb7bd80d1201991880160a10b65ae59071c67cead8d21",
+    "output_sha256": "a4292cff1e8e9ec7912cb7bd80d1201991880160a10b65ae59071c67cead8d21",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 2.09808349609375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 2.09808349609375e-05
+      },
+      {
+        "version": "baseline",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 2.002716064453125e-05
+      },
+      {
+        "version": "optimized",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 2.002716064453125e-05
+      },
+      {
+        "version": "baseline",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 2.47955322265625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 2.47955322265625e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.10352648983333333,
+        "median_ms": 0.103570137,
+        "stddev_ms": 0.00030106570255339495,
+        "samples_ms": [
+          0.103560537,
+          0.103575468,
+          0.103367463,
+          0.103187203,
+          0.103617065,
+          0.102822401,
+          0.103667207,
+          0.103564806,
+          0.10403733,
+          0.103776,
+          0.103589334,
+          0.103553064
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.10372382399999999,
+        "median_ms": 0.103556268,
+        "stddev_ms": 0.0006872377488709958,
+        "samples_ms": [
+          0.103492267,
+          0.103560537,
+          0.103551999,
+          0.105832539,
+          0.103275739,
+          0.103478402,
+          0.103628799,
+          0.103695996,
+          0.103765339,
+          0.103194669,
+          0.103774935,
+          0.103434667
+        ]
+      }
+    },
+    "speedup": 0.9980975039382788,
+    "speedup_ci95": [
+      0.9936467375712482,
+      1.0013283290651451
+    ],
+    "elapsed_seconds": 69.01605460001156
+  },
+  {
+    "case": "matvec_1280",
+    "family": "matvec",
+    "size": 1280,
+    "description": "One thread per matrix row; serial dot accumulation.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "758e15b671aec18d0824d431b0e7767d6dcccdf1936c2d137a41c7a73717ed1b",
+    "output_sha256": "758e15b671aec18d0824d431b0e7767d6dcccdf1936c2d137a41c7a73717ed1b",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1280,
+        "max_error": 3.337860107421875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1280,
+        "max_error": 3.337860107421875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1283,
+        "max_error": 2.86102294921875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1283,
+        "max_error": 2.86102294921875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1279,
+        "max_error": 3.910064697265625e-05
+      },
+      {
+        "version": "optimized",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1279,
+        "max_error": 3.910064697265625e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.163123825,
+        "median_ms": 0.16302827749999999,
+        "stddev_ms": 0.00040809633850154303,
+        "samples_ms": [
+          0.162816003,
+          0.162869319,
+          0.163308799,
+          0.163029343,
+          0.16321601,
+          0.16376321,
+          0.163027212,
+          0.162886396,
+          0.163089067,
+          0.162648529,
+          0.164027736,
+          0.162804276
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.16296613216666667,
+        "median_ms": 0.162921071,
+        "stddev_ms": 0.000412833787509921,
+        "samples_ms": [
+          0.162679464,
+          0.163293868,
+          0.16256319,
+          0.162816003,
+          0.162474662,
+          0.163080528,
+          0.162978142,
+          0.163020805,
+          0.163226664,
+          0.162611201,
+          0.162864,
+          0.163985059
+        ]
+      }
+    },
+    "speedup": 1.0009676417500788,
+    "speedup_ci95": [
+      0.9989881556933705,
+      1.0028673628172762
+    ],
+    "elapsed_seconds": 71.44924089999404
+  },
+  {
+    "case": "row_sum_192",
+    "family": "row_sum",
+    "size": 192,
+    "description": "One thread per row; serial reduction with strided inter-thread reads.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.025,
+    "selected_variant": "input_i4_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 57.174578600010136
+  },
+  {
+    "case": "row_sum_384",
+    "family": "row_sum",
+    "size": 384,
+    "description": "One thread per row; serial reduction with strided inter-thread reads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "3d0c49800e1ccd87ffa699b553bd33a27880a2ce85c36305153929b6388cecdf",
+    "output_sha256": "3d0c49800e1ccd87ffa699b553bd33a27880a2ce85c36305153929b6388cecdf",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.04604142183333333,
+        "median_ms": 0.045931199500000006,
+        "stddev_ms": 0.00044447644429656305,
+        "samples_ms": [
+          0.046078932,
+          0.046043735,
+          0.046082135,
+          0.047389865,
+          0.046048,
+          0.045943465,
+          0.045875199,
+          0.045731198,
+          0.045918934,
+          0.045892265,
+          0.045806933,
+          0.045686401
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.046038311166666665,
+        "median_ms": 0.046060266,
+        "stddev_ms": 0.000152874878657996,
+        "samples_ms": [
+          0.045931734,
+          0.046080001,
+          0.046284799,
+          0.045930669,
+          0.046231467,
+          0.045867734,
+          0.046148267,
+          0.046083201,
+          0.045738664,
+          0.046073601,
+          0.046046931,
+          0.046042666
+        ]
+      }
+    },
+    "speedup": 1.0000675669152026,
+    "speedup_ci95": [
+      0.9955829448133093,
+      1.0065847866975235
+    ],
+    "elapsed_seconds": 80.19768720000866
+  },
+  {
+    "case": "row_sum_640",
+    "family": "row_sum",
+    "size": 640,
+    "description": "One thread per row; serial reduction with strided inter-thread reads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "f3eee24878052ad216333eb5e8643f528a41c1ce373b4179172aba3e7420bfa2",
+    "output_sha256": "f3eee24878052ad216333eb5e8643f528a41c1ce373b4179172aba3e7420bfa2",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.07858390983333333,
+        "median_ms": 0.078476798,
+        "stddev_ms": 0.00029054176843452484,
+        "samples_ms": [
+          0.078504533,
+          0.078449063,
+          0.078577064,
+          0.078438401,
+          0.078665599,
+          0.0792576,
+          0.078387193,
+          0.078370132,
+          0.079071999,
+          0.078307196,
+          0.078438401,
+          0.078539737
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.07873706633333333,
+        "median_ms": 0.078563735,
+        "stddev_ms": 0.0004411054916152743,
+        "samples_ms": [
+          0.079027198,
+          0.079866663,
+          0.07918933,
+          0.078840531,
+          0.078455463,
+          0.078506671,
+          0.078605868,
+          0.078428797,
+          0.0783168,
+          0.078647472,
+          0.078438401,
+          0.078521602
+        ]
+      }
+    },
+    "speedup": 0.998054836087598,
+    "speedup_ci95": [
+      0.9942637577974942,
+      1.0015302644511577
+    ],
+    "elapsed_seconds": 70.54474379998283
+  },
+  {
+    "case": "row_sum_896",
+    "family": "row_sum",
+    "size": 896,
+    "description": "One thread per row; serial reduction with strided inter-thread reads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "90238078249c99221d5fc6d9586cb8e8cbaf39b22b5e527424a5d4bc54325fb5",
+    "output_sha256": "90238078249c99221d5fc6d9586cb8e8cbaf39b22b5e527424a5d4bc54325fb5",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.10048613433333334,
+        "median_ms": 0.100420266,
+        "stddev_ms": 0.00027414335497835294,
+        "samples_ms": [
+          0.100376531,
+          0.100473605,
+          0.100409605,
+          0.100344531,
+          0.100115202,
+          0.100469336,
+          0.100486398,
+          0.101272538,
+          0.100625068,
+          0.100420266,
+          0.100420266,
+          0.100420266
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.10056079975,
+        "median_ms": 0.1004176025,
+        "stddev_ms": 0.0005492036418787948,
+        "samples_ms": [
+          0.100581333,
+          0.102263466,
+          0.10021653,
+          0.100414939,
+          0.100175999,
+          0.100498132,
+          0.100397862,
+          0.100546129,
+          0.100361601,
+          0.100420266,
+          0.100473605,
+          0.100379735
+        ]
+      }
+    },
+    "speedup": 0.9992575097169843,
+    "speedup_ci95": [
+      0.9955460972628662,
+      1.002072449872347
+    ],
+    "elapsed_seconds": 69.98014050000347
+  },
+  {
+    "case": "row_sum_1280",
+    "family": "row_sum",
+    "size": 1280,
+    "description": "One thread per row; serial reduction with strided inter-thread reads.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.014,
+    "selected_variant": "input_i7_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 61.35371419999865
+  },
+  {
+    "case": "row_dot_192",
+    "family": "row_dot",
+    "size": 192,
+    "description": "Batched row dot products; serial reduction per thread.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "e62c977d74e20113002e447552ca53cafe477dda84c5d8052400f2aab6f9059f",
+    "output_sha256": "e62c977d74e20113002e447552ca53cafe477dda84c5d8052400f2aab6f9059f",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 192,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 192,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 195,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 195,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 191,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 191,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.044277155416666665,
+        "median_ms": 0.044183466500000004,
+        "stddev_ms": 0.00036250975427665433,
+        "samples_ms": [
+          0.044125866,
+          0.044260267,
+          0.044259198,
+          0.044100266,
+          0.044116266,
+          0.044261333,
+          0.044313602,
+          0.0440896,
+          0.045394134,
+          0.0440384,
+          0.044129066,
+          0.044237867
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.04416844441666667,
+        "median_ms": 0.0441674665,
+        "stddev_ms": 9.748877371402956e-05,
+        "samples_ms": [
+          0.044253867,
+          0.044236798,
+          0.044050135,
+          0.044305068,
+          0.044032,
+          0.044100266,
+          0.044234667,
+          0.044270933,
+          0.044100266,
+          0.044247467,
+          0.0440896,
+          0.044100266
+        ]
+      }
+    },
+    "speedup": 1.0024612820631504,
+    "speedup_ci95": [
+      0.9989699681653252,
+      1.0077325018545702
+    ],
+    "elapsed_seconds": 65.43760130001465
+  },
+  {
+    "case": "row_dot_384",
+    "family": "row_dot",
+    "size": 384,
+    "description": "Batched row dot products; serial reduction per thread.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "ff4bd55f84ed021a29ef90ab797a6c382d7f4906935bba10dd394d2557a8024a",
+    "output_sha256": "ff4bd55f84ed021a29ef90ab797a6c382d7f4906935bba10dd394d2557a8024a",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 1.9073486328125e-06
+      },
+      {
+        "version": "optimized",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 1.9073486328125e-06
+      },
+      {
+        "version": "baseline",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 7.62939453125e-06
+      },
+      {
+        "version": "optimized",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 7.62939453125e-06
+      },
+      {
+        "version": "baseline",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 4.76837158203125e-06
+      },
+      {
+        "version": "optimized",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 4.76837158203125e-06
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.085602666,
+        "median_ms": 0.085598927,
+        "stddev_ms": 0.00010856626829226932,
+        "samples_ms": [
+          0.085538134,
+          0.085549861,
+          0.085495465,
+          0.085742936,
+          0.085401602,
+          0.085733332,
+          0.085723735,
+          0.085674666,
+          0.085647993,
+          0.085530668,
+          0.085538134,
+          0.085655466
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.08576444408333334,
+        "median_ms": 0.08571946650000001,
+        "stddev_ms": 0.0002996329359479864,
+        "samples_ms": [
+          0.086316802,
+          0.085841067,
+          0.085728005,
+          0.085469864,
+          0.086381868,
+          0.085539199,
+          0.085539199,
+          0.085803732,
+          0.08556693,
+          0.085710928,
+          0.085514665,
+          0.08576107
+        ]
+      }
+    },
+    "speedup": 0.9981136928588245,
+    "speedup_ci95": [
+      0.995957577259081,
+      1.0000022134180366
+    ],
+    "elapsed_seconds": 65.76475190001656
+  },
+  {
+    "case": "row_dot_640",
+    "family": "row_dot",
+    "size": 640,
+    "description": "Batched row dot products; serial reduction per thread.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "c209bcabd4d452d8f4055bd4fc2d877b92b5de206e5c711a0079d5d4ca8a32bc",
+    "output_sha256": "c209bcabd4d452d8f4055bd4fc2d877b92b5de206e5c711a0079d5d4ca8a32bc",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 1.1444091796875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 1.1444091796875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 2.193450927734375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 2.193450927734375e-05
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 9.5367431640625e-06
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 9.5367431640625e-06
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.15017333366666666,
+        "median_ms": 0.1500922665,
+        "stddev_ms": 0.0004860783837080633,
+        "samples_ms": [
+          0.149782404,
+          0.150469333,
+          0.150322139,
+          0.14964053,
+          0.14992854,
+          0.150118396,
+          0.150037333,
+          0.149613872,
+          0.151415452,
+          0.150066137,
+          0.15019092,
+          0.150494948
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.15004648891666666,
+        "median_ms": 0.14996799849999998,
+        "stddev_ms": 0.0003807510360309373,
+        "samples_ms": [
+          0.149585068,
+          0.150220811,
+          0.149785593,
+          0.149642676,
+          0.150926933,
+          0.15011093,
+          0.149834663,
+          0.150114134,
+          0.150527999,
+          0.149875194,
+          0.149873063,
+          0.150060803
+        ]
+      }
+    },
+    "speedup": 1.000845369664534,
+    "speedup_ci95": [
+      0.998716787287537,
+      1.0031566946096186
+    ],
+    "elapsed_seconds": 67.0950394999818
+  },
+  {
+    "case": "row_dot_896",
+    "family": "row_dot",
+    "size": 896,
+    "description": "Batched row dot products; serial reduction per thread.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "e2a286836cfca8ad01eb87e141edf17f0a54b86634aa3b477b8c9615abe02c95",
+    "output_sha256": "e2a286836cfca8ad01eb87e141edf17f0a54b86634aa3b477b8c9615abe02c95",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 2.288818359375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 2.288818359375e-05
+      },
+      {
+        "version": "baseline",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 2.6702880859375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 2.6702880859375e-05
+      },
+      {
+        "version": "baseline",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 2.288818359375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 2.288818359375e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.19585209091666667,
+        "median_ms": 0.19581333550000002,
+        "stddev_ms": 0.0001705065130717924,
+        "samples_ms": [
+          0.195583999,
+          0.196083203,
+          0.19583787,
+          0.196061864,
+          0.195783466,
+          0.195723742,
+          0.195716277,
+          0.195788801,
+          0.195746139,
+          0.195870936,
+          0.196160004,
+          0.19586879
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.19696506716666667,
+        "median_ms": 0.19595893450000001,
+        "stddev_ms": 0.0035613448624739804,
+        "samples_ms": [
+          0.195391998,
+          0.196148261,
+          0.195857063,
+          0.195926398,
+          0.195800528,
+          0.208244264,
+          0.19616428,
+          0.195810124,
+          0.196061864,
+          0.196429878,
+          0.195754677,
+          0.195991471
+        ]
+      }
+    },
+    "speedup": 0.994349372373436,
+    "speedup_ci95": [
+      0.98372156998072,
+      1.0002084537295481
+    ],
+    "elapsed_seconds": 69.25564580000355
+  },
+  {
+    "case": "row_dot_1280",
+    "family": "row_dot",
+    "size": 1280,
+    "description": "Batched row dot products; serial reduction per thread.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "027c82666cb810799eeb3f709062e851e9d8a9e963fbf9d6ee41fcd2fc83c63b",
+    "output_sha256": "027c82666cb810799eeb3f709062e851e9d8a9e963fbf9d6ee41fcd2fc83c63b",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1280,
+        "max_error": 4.1961669921875e-05
+      },
+      {
+        "version": "optimized",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1280,
+        "max_error": 4.1961669921875e-05
+      },
+      {
+        "version": "baseline",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1283,
+        "max_error": 3.24249267578125e-05
+      },
+      {
+        "version": "optimized",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1283,
+        "max_error": 3.24249267578125e-05
+      },
+      {
+        "version": "baseline",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1279,
+        "max_error": 3.719329833984375e-05
+      },
+      {
+        "version": "optimized",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1279,
+        "max_error": 3.719329833984375e-05
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.30509599291666667,
+        "median_ms": 0.30498824999999996,
+        "stddev_ms": 0.0003374239171510234,
+        "samples_ms": [
+          0.305425078,
+          0.305646926,
+          0.304947197,
+          0.305012256,
+          0.304728538,
+          0.304682672,
+          0.304876804,
+          0.304964244,
+          0.305076271,
+          0.305643708,
+          0.305337578,
+          0.304810643
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.305297869,
+        "median_ms": 0.30522188549999996,
+        "stddev_ms": 0.00040661987258685183,
+        "samples_ms": [
+          0.305588275,
+          0.306219727,
+          0.305276811,
+          0.305176556,
+          0.30476585,
+          0.305823982,
+          0.305356801,
+          0.305015475,
+          0.305083722,
+          0.305267215,
+          0.304967463,
+          0.305032551
+        ]
+      }
+    },
+    "speedup": 0.9993387569851222,
+    "speedup_ci95": [
+      0.9983904396458726,
+      1.0002760823812937
+    ],
+    "elapsed_seconds": 71.4432127000182
+  },
+  {
+    "case": "row_max_192",
+    "family": "row_max",
+    "size": 192,
+    "description": "One thread per row; serial maximum reduction.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "c5c8fc12af93c7ebccb3463ae018110bff13d66ea7d53ab59f248b038523de83",
+    "output_sha256": "c5c8fc12af93c7ebccb3463ae018110bff13d66ea7d53ab59f248b038523de83",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 192,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 192,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 195,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 195,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 191,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 191,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.025263644666666668,
+        "median_ms": 0.025507733,
+        "stddev_ms": 0.0006437543976539403,
+        "samples_ms": [
+          0.025477333,
+          0.025538133,
+          0.024520535,
+          0.024442667,
+          0.024485333,
+          0.025995733,
+          0.025552001,
+          0.026113067,
+          0.025036801,
+          0.025873067,
+          0.024446933,
+          0.025682133
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.02505635525,
+        "median_ms": 0.024668799499999998,
+        "stddev_ms": 0.0008734450620860872,
+        "samples_ms": [
+          0.024712533,
+          0.024711465,
+          0.024507733,
+          0.024404267,
+          0.024531199,
+          0.025773866,
+          0.026788266,
+          0.0249216,
+          0.024626134,
+          0.026725333,
+          0.024512,
+          0.024461867
+        ]
+      }
+    },
+    "speedup": 1.008272927750203,
+    "speedup_ci95": [
+      0.9834461008528915,
+      1.0314947142081552
+    ],
+    "elapsed_seconds": 64.43347629997879
+  },
+  {
+    "case": "row_max_384",
+    "family": "row_max",
+    "size": 384,
+    "description": "One thread per row; serial maximum reduction.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "832f596f98ef780b3292353af50afe542c7e27f08199b165318eeb30694067df",
+    "output_sha256": "832f596f98ef780b3292353af50afe542c7e27f08199b165318eeb30694067df",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 384,
+        "seed": 0,
+        "elements": 384,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 387,
+        "seed": 1,
+        "elements": 387,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 383,
+        "seed": 7,
+        "elements": 383,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.0461112895,
+        "median_ms": 0.046027735,
+        "stddev_ms": 0.0004417811484956,
+        "samples_ms": [
+          0.046222933,
+          0.046011735,
+          0.045735467,
+          0.045989335,
+          0.046054401,
+          0.046274133,
+          0.045922134,
+          0.0460512,
+          0.045739733,
+          0.045875199,
+          0.046043735,
+          0.047415469
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.046044266333333334,
+        "median_ms": 0.0460794665,
+        "stddev_ms": 0.0001331774545923485,
+        "samples_ms": [
+          0.046101332,
+          0.046005331,
+          0.046067197,
+          0.046080001,
+          0.045685336,
+          0.046114136,
+          0.046011735,
+          0.045943465,
+          0.046139732,
+          0.046081066,
+          0.046222933,
+          0.046078932
+        ]
+      }
+    },
+    "speedup": 1.0014556245978914,
+    "speedup_ci95": [
+      0.9970964592656298,
+      1.0074351465422482
+    ],
+    "elapsed_seconds": 64.75114360000589
+  },
+  {
+    "case": "row_max_640",
+    "family": "row_max",
+    "size": 640,
+    "description": "One thread per row; serial maximum reduction.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "f5b68e468f3e656173f7bd0f947aca26f9665c6df94beb7007eccce18c7e5371",
+    "output_sha256": "f5b68e468f3e656173f7bd0f947aca26f9665c6df94beb7007eccce18c7e5371",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 640,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 643,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 639,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.07923768766666667,
+        "median_ms": 0.078977596,
+        "stddev_ms": 0.0005506032324146996,
+        "samples_ms": [
+          0.078866132,
+          0.078948267,
+          0.079052798,
+          0.07893867,
+          0.078945063,
+          0.078901328,
+          0.078984529,
+          0.079394132,
+          0.078970663,
+          0.079330131,
+          0.08077547,
+          0.079745069
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.07905466608333334,
+        "median_ms": 0.0790815985,
+        "stddev_ms": 0.00024171149676815496,
+        "samples_ms": [
+          0.079394132,
+          0.078838393,
+          0.07918933,
+          0.079121068,
+          0.078581333,
+          0.0792384,
+          0.078990936,
+          0.079191469,
+          0.079006933,
+          0.07932587,
+          0.078736,
+          0.079042129
+        ]
+      }
+    },
+    "speedup": 1.0023151268913135,
+    "speedup_ci95": [
+      0.9986740140040414,
+      1.0068611144283652
+    ],
+    "elapsed_seconds": 66.63303309999174
+  },
+  {
+    "case": "row_max_896",
+    "family": "row_max",
+    "size": 896,
+    "description": "One thread per row; serial maximum reduction.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "1d82f288d6e3c685874b4eb828e827942518edc77ad8f9c0a212a6016d93b0f4",
+    "output_sha256": "1d82f288d6e3c685874b4eb828e827942518edc77ad8f9c0a212a6016d93b0f4",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 896,
+        "seed": 0,
+        "elements": 896,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 899,
+        "seed": 1,
+        "elements": 899,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 895,
+        "seed": 7,
+        "elements": 895,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.10078106825,
+        "median_ms": 0.1007738635,
+        "stddev_ms": 0.00015565855840859216,
+        "samples_ms": [
+          0.100590937,
+          0.100966401,
+          0.100934401,
+          0.100693338,
+          0.100786127,
+          0.1007616,
+          0.101100802,
+          0.100625068,
+          0.100821339,
+          0.1007872,
+          0.100693338,
+          0.100612268
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.100819289,
+        "median_ms": 0.1006831975,
+        "stddev_ms": 0.0003246695584688595,
+        "samples_ms": [
+          0.100829862,
+          0.101025067,
+          0.100553602,
+          0.100701861,
+          0.101717338,
+          0.100598402,
+          0.100664534,
+          0.100625068,
+          0.100625068,
+          0.100886397,
+          0.100993067,
+          0.100611202
+        ]
+      }
+    },
+    "speedup": 0.9996208984374011,
+    "speedup_ci95": [
+      0.9975121487087474,
+      1.0013638663175939
+    ],
+    "elapsed_seconds": 68.71962409999105
+  },
+  {
+    "case": "row_max_1280",
+    "family": "row_max",
+    "size": 1280,
+    "description": "One thread per row; serial maximum reduction.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "d15b519ea00d871fcc89b73a89840d0c99c8838445ce2bc0816cf9edb755bdd6",
+    "output_sha256": "d15b519ea00d871fcc89b73a89840d0c99c8838445ce2bc0816cf9edb755bdd6",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1280,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1280,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1283,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1283,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1279,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1279,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.16017110774999999,
+        "median_ms": 0.160133861,
+        "stddev_ms": 0.0002671032189759153,
+        "samples_ms": [
+          0.160153598,
+          0.159627736,
+          0.159937069,
+          0.160017058,
+          0.160110936,
+          0.160361603,
+          0.160415992,
+          0.160581335,
+          0.160114124,
+          0.160211191,
+          0.160014927,
+          0.160507724
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.16024542216666668,
+        "median_ms": 0.160252802,
+        "stddev_ms": 0.00033453974068094915,
+        "samples_ms": [
+          0.160768002,
+          0.16022186,
+          0.159933865,
+          0.160284802,
+          0.160283744,
+          0.160002142,
+          0.160153598,
+          0.160547197,
+          0.160084262,
+          0.160349861,
+          0.160726398,
+          0.159589335
+        ]
+      }
+    },
+    "speedup": 0.9995362462424081,
+    "speedup_ci95": [
+      0.9980763114319069,
+      1.0010015328378963
+    ],
+    "elapsed_seconds": 70.36727499999688
+  },
+  {
+    "case": "transpose_192",
+    "family": "transpose",
+    "size": 192,
+    "description": "Direct global-memory transpose without a shared-memory tile.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.161,
+    "selected_variant": "input_i6_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 41.46718149998924
+  },
+  {
+    "case": "transpose_384",
+    "family": "transpose",
+    "size": 384,
+    "description": "Direct global-memory transpose without a shared-memory tile.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.172,
+    "selected_variant": "input_i6_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 41.12597890000325
+  },
+  {
+    "case": "transpose_640",
+    "family": "transpose",
+    "size": 640,
+    "description": "Direct global-memory transpose without a shared-memory tile.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "5332e68c5fb0107ff77e1791ecc98d60c5d74dd24cdde5821d0a7ff5d3544382",
+    "output_sha256": "5332e68c5fb0107ff77e1791ecc98d60c5d74dd24cdde5821d0a7ff5d3544382",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.014874844416666666,
+        "median_ms": 0.0144943995,
+        "stddev_ms": 0.0014295305840113745,
+        "samples_ms": [
+          0.013742934,
+          0.017408,
+          0.017066667,
+          0.0130016,
+          0.0161792,
+          0.0142656,
+          0.014723199,
+          0.013973334,
+          0.014961067,
+          0.013764266,
+          0.015769599,
+          0.013642667
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.015185511166666667,
+        "median_ms": 0.0145466665,
+        "stddev_ms": 0.0016755988798911614,
+        "samples_ms": [
+          0.016725333,
+          0.018638933,
+          0.014465067,
+          0.016998401,
+          0.014557866,
+          0.014535467,
+          0.014404267,
+          0.0151008,
+          0.013074134,
+          0.013092266,
+          0.0142048,
+          0.0164288
+        ]
+      }
+    },
+    "speedup": 0.979541897102421,
+    "speedup_ci95": [
+      0.9053667933389373,
+      1.0596894728720654
+    ],
+    "elapsed_seconds": 51.92717830001493
+  },
+  {
+    "case": "transpose_896",
+    "family": "transpose",
+    "size": 896,
+    "description": "Direct global-memory transpose without a shared-memory tile.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "8bf40fbfdc95d51961a7941ad6d29122d237419b0765f65bc7861d917691956f",
+    "output_sha256": "8bf40fbfdc95d51961a7941ad6d29122d237419b0765f65bc7861d917691956f",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 896,
+        "seed": 0,
+        "elements": 802816,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 896,
+        "seed": 0,
+        "elements": 802816,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 899,
+        "seed": 1,
+        "elements": 808201,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 899,
+        "seed": 1,
+        "elements": 808201,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 895,
+        "seed": 7,
+        "elements": 801025,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 895,
+        "seed": 7,
+        "elements": 801025,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.020590933166666665,
+        "median_ms": 0.0203194665,
+        "stddev_ms": 0.0005422011681699691,
+        "samples_ms": [
+          0.020548265,
+          0.020953599,
+          0.020295467,
+          0.021489065,
+          0.021504002,
+          0.0200704,
+          0.021174399,
+          0.020116268,
+          0.020112,
+          0.020209067,
+          0.0202752,
+          0.020343466
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.021161777833333333,
+        "median_ms": 0.021343467499999998,
+        "stddev_ms": 0.0008633818673370051,
+        "samples_ms": [
+          0.020467199,
+          0.021421868,
+          0.021838933,
+          0.021638399,
+          0.020206934,
+          0.022788266,
+          0.021265067,
+          0.0220352,
+          0.020263467,
+          0.020043733,
+          0.020478934,
+          0.021493334
+        ]
+      }
+    },
+    "speedup": 0.9730247301922105,
+    "speedup_ci95": [
+      0.9475182087124787,
+      0.9992531661525251
+    ],
+    "elapsed_seconds": 53.53791510002338
+  },
+  {
+    "case": "transpose_1280",
+    "family": "transpose",
+    "size": 1280,
+    "description": "Direct global-memory transpose without a shared-memory tile.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "168804f102f6a0e14afb9ac5f39a95e8f205b61348875ee5ab1a63e44997af60",
+    "output_sha256": "168804f102f6a0e14afb9ac5f39a95e8f205b61348875ee5ab1a63e44997af60",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1638400,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1638400,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1646089,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1646089,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1635841,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1635841,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.04544515566666667,
+        "median_ms": 0.045418134,
+        "stddev_ms": 0.0001877714787991632,
+        "samples_ms": [
+          0.045805868,
+          0.045285333,
+          0.045154136,
+          0.045305602,
+          0.045625601,
+          0.045505065,
+          0.045397334,
+          0.045438934,
+          0.045495465,
+          0.045670398,
+          0.045260798,
+          0.045397334
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.045496977833333334,
+        "median_ms": 0.045545600000000006,
+        "stddev_ms": 0.0002344770656754891,
+        "samples_ms": [
+          0.045305602,
+          0.045543469,
+          0.045670398,
+          0.045547731,
+          0.045998935,
+          0.045260798,
+          0.045568001,
+          0.045627732,
+          0.045320533,
+          0.045660801,
+          0.045267202,
+          0.045192532
+        ]
+      }
+    },
+    "speedup": 0.9988609756266339,
+    "speedup_ci95": [
+      0.9952196174079696,
+      1.002394368860561
+    ],
+    "elapsed_seconds": 55.0285106000083
+  },
+  {
+    "case": "stencil9_8192",
+    "family": "stencil9",
+    "size": 8192,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "f4d3b1fe8a5637fa90967a3c45c65918d3cf58a15a122c384e7713ca1fdc4955",
+    "output_sha256": "f4d3b1fe8a5637fa90967a3c45c65918d3cf58a15a122c384e7713ca1fdc4955",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 8192,
+        "seed": 0,
+        "elements": 8192,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 8192,
+        "seed": 0,
+        "elements": 8192,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 8195,
+        "seed": 1,
+        "elements": 8195,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 8195,
+        "seed": 1,
+        "elements": 8195,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 8191,
+        "seed": 7,
+        "elements": 8191,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 8191,
+        "seed": 7,
+        "elements": 8191,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.01115031125,
+        "median_ms": 0.0101184005,
+        "stddev_ms": 0.004009951146946128,
+        "samples_ms": [
+          0.011479467,
+          0.0099968,
+          0.023373866,
+          0.009410133,
+          0.011405867,
+          0.009178666,
+          0.010240001,
+          0.011112533,
+          0.009693867,
+          0.010990934,
+          0.007566934,
+          0.009354667
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.011179377666666667,
+        "median_ms": 0.0111936,
+        "stddev_ms": 0.0008699543379387356,
+        "samples_ms": [
+          0.010688,
+          0.011447466,
+          0.0115072,
+          0.0131072,
+          0.009777067,
+          0.0111808,
+          0.011873066,
+          0.0114656,
+          0.0107552,
+          0.009963733,
+          0.011191467,
+          0.011195733
+        ]
+      }
+    },
+    "speedup": 0.9973999968930888,
+    "speedup_ci95": [
+      0.8471166811919371,
+      1.2226786607098117
+    ],
+    "elapsed_seconds": 64.07055589999072
+  },
+  {
+    "case": "stencil9_32768",
+    "family": "stencil9",
+    "size": 32768,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "f544e33beb856ff2c1dc26dc53c850d18f77a8cb518dd037fa3df23305b57761",
+    "output_sha256": "f544e33beb856ff2c1dc26dc53c850d18f77a8cb518dd037fa3df23305b57761",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 32768,
+        "seed": 0,
+        "elements": 32768,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 32768,
+        "seed": 0,
+        "elements": 32768,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 32771,
+        "seed": 1,
+        "elements": 32771,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 32771,
+        "seed": 1,
+        "elements": 32771,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 32767,
+        "seed": 7,
+        "elements": 32767,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 32767,
+        "seed": 7,
+        "elements": 32767,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.010767111166666666,
+        "median_ms": 0.011125333500000001,
+        "stddev_ms": 0.0009324931527928802,
+        "samples_ms": [
+          0.011516799,
+          0.012014934,
+          0.011264,
+          0.009841067,
+          0.011264,
+          0.010016,
+          0.0104448,
+          0.011428267,
+          0.008667734,
+          0.010376533,
+          0.011384533,
+          0.010986667
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.010783999833333334,
+        "median_ms": 0.011192,
+        "stddev_ms": 0.001335808705399966,
+        "samples_ms": [
+          0.012369066,
+          0.011675733,
+          0.010065067,
+          0.0104896,
+          0.0122848,
+          0.011076267,
+          0.0115072,
+          0.010485333,
+          0.0114688,
+          0.008152533,
+          0.011307733,
+          0.008525866
+        ]
+      }
+    },
+    "speedup": 0.9984339144169434,
+    "speedup_ci95": [
+      0.9217739172162918,
+      1.0875804357263408
+    ],
+    "elapsed_seconds": 64.8094213999866
+  },
+  {
+    "case": "stencil9_131072",
+    "family": "stencil9",
+    "size": 131072,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.153,
+    "selected_variant": "input_i6_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 54.94937970000319
+  },
+  {
+    "case": "stencil9_524288",
+    "family": "stencil9",
+    "size": 524288,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.149,
+    "selected_variant": "input_i6_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 56.87651219998952
+  },
+  {
+    "case": "stencil9_2097152",
+    "family": "stencil9",
+    "size": 2097152,
+    "description": "Periodic nine-point 1D stencil with direct loads and modulo indexing.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "3569d07da2099c5fb8f99a90d4e64df3189def66442bad6ca7ef91328e8ffe30",
+    "output_sha256": "3569d07da2099c5fb8f99a90d4e64df3189def66442bad6ca7ef91328e8ffe30",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 2097152,
+        "seed": 0,
+        "elements": 2097152,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 2097152,
+        "seed": 0,
+        "elements": 2097152,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 2097155,
+        "seed": 1,
+        "elements": 2097155,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 2097155,
+        "seed": 1,
+        "elements": 2097155,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 2097151,
+        "seed": 7,
+        "elements": 2097151,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 2097151,
+        "seed": 7,
+        "elements": 2097151,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.04360195533333333,
+        "median_ms": 0.0436053315,
+        "stddev_ms": 0.0001160975056229837,
+        "samples_ms": [
+          0.043563731,
+          0.043568,
+          0.043622397,
+          0.043625601,
+          0.043554135,
+          0.043699201,
+          0.043485869,
+          0.043339733,
+          0.043588266,
+          0.043739732,
+          0.043671466,
+          0.043765333
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.04349973333333333,
+        "median_ms": 0.043530667499999995,
+        "stddev_ms": 0.00014476977418416268,
+        "samples_ms": [
+          0.0435232,
+          0.043546665,
+          0.043385603,
+          0.0435584,
+          0.043614931,
+          0.043364268,
+          0.043349333,
+          0.043349333,
+          0.043322667,
+          0.043685332,
+          0.043538135,
+          0.043758933
+        ]
+      }
+    },
+    "speedup": 1.0023499454402784,
+    "speedup_ci95": [
+      0.9999796164052838,
+      1.0045877093213977
+    ],
+    "elapsed_seconds": 72.14302300001145
+  },
+  {
+    "case": "conv3x3_192",
+    "family": "conv3x3",
+    "size": 192,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "913c8f9003a3fbb14ebfa80f317db0e9ed8f817a700307b39a5167f7981b33f7",
+    "output_sha256": "913c8f9003a3fbb14ebfa80f317db0e9ed8f817a700307b39a5167f7981b33f7",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 9.271833623092363e-08
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 9.271833623092363e-08
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 7.947285973752827e-08
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 7.947285973752827e-08
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 7.947285973752827e-08
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 7.947285973752827e-08
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.01050773325,
+        "median_ms": 0.0102687995,
+        "stddev_ms": 0.0009447162490100714,
+        "samples_ms": [
+          0.011332267,
+          0.010207999,
+          0.009943467,
+          0.009799466,
+          0.0092576,
+          0.0103296,
+          0.011093333,
+          0.012088533,
+          0.009557334,
+          0.010772267,
+          0.0119904,
+          0.009720533
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.01077733325,
+        "median_ms": 0.010809067,
+        "stddev_ms": 0.001278641563282556,
+        "samples_ms": [
+          0.009637333,
+          0.009898666,
+          0.0092384,
+          0.012081067,
+          0.0098304,
+          0.011296,
+          0.011201067,
+          0.011754666,
+          0.013312,
+          0.009192533,
+          0.0114688,
+          0.010417067
+        ]
+      }
+    },
+    "speedup": 0.9749845352513341,
+    "speedup_ci95": [
+      0.898347995883761,
+      1.056469237007094
+    ],
+    "elapsed_seconds": 50.33959709998453
+  },
+  {
+    "case": "conv3x3_384",
+    "family": "conv3x3",
+    "size": 384,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "21f0dd7dc05d3eaf21835c49ecd83b795ed40184ec12263afba75ffd588080d1",
+    "output_sha256": "21f0dd7dc05d3eaf21835c49ecd83b795ed40184ec12263afba75ffd588080d1",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 384,
+        "seed": 0,
+        "elements": 147456,
+        "max_error": 1.0596381294636359e-07
+      },
+      {
+        "version": "optimized",
+        "size": 384,
+        "seed": 0,
+        "elements": 147456,
+        "max_error": 1.0596381294636359e-07
+      },
+      {
+        "version": "baseline",
+        "size": 387,
+        "seed": 1,
+        "elements": 149769,
+        "max_error": 9.271833623092363e-08
+      },
+      {
+        "version": "optimized",
+        "size": 387,
+        "seed": 1,
+        "elements": 149769,
+        "max_error": 9.271833623092363e-08
+      },
+      {
+        "version": "baseline",
+        "size": 383,
+        "seed": 7,
+        "elements": 146689,
+        "max_error": 1.0596381283534129e-07
+      },
+      {
+        "version": "optimized",
+        "size": 383,
+        "seed": 7,
+        "elements": 146689,
+        "max_error": 1.0596381283534129e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.012885600083333334,
+        "median_ms": 0.013010133,
+        "stddev_ms": 0.0005461568740932921,
+        "samples_ms": [
+          0.0118272,
+          0.013195734,
+          0.013053866,
+          0.0118592,
+          0.013425067,
+          0.013246934,
+          0.012564267,
+          0.012939733,
+          0.012842667,
+          0.0132832,
+          0.013422933,
+          0.0129664
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.014571200083333333,
+        "median_ms": 0.013245333500000001,
+        "stddev_ms": 0.004335905774976068,
+        "samples_ms": [
+          0.0129856,
+          0.011809067,
+          0.0164512,
+          0.013243733,
+          0.011799467,
+          0.012304,
+          0.013354667,
+          0.013246934,
+          0.014267733,
+          0.0125056,
+          0.015258667,
+          0.027627733
+        ]
+      }
+    },
+    "speedup": 0.8843197546969379,
+    "speedup_ci95": [
+      0.7414047198315892,
+      1.0086496883236113
+    ],
+    "elapsed_seconds": 52.64931149999029
+  },
+  {
+    "case": "conv3x3_640",
+    "family": "conv3x3",
+    "size": 640,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "c73f4535ccd9b9aa0bc0f7ec42ddffada6d944d84263fe4fa4265d3546ef6728",
+    "output_sha256": "c73f4535ccd9b9aa0bc0f7ec42ddffada6d944d84263fe4fa4265d3546ef6728",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 1.3245476626622121e-07
+      },
+      {
+        "version": "optimized",
+        "size": 640,
+        "seed": 0,
+        "elements": 409600,
+        "max_error": 1.3245476626622121e-07
+      },
+      {
+        "version": "baseline",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 1.0596381305738589e-07
+      },
+      {
+        "version": "optimized",
+        "size": 643,
+        "seed": 1,
+        "elements": 413449,
+        "max_error": 1.0596381305738589e-07
+      },
+      {
+        "version": "baseline",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 1.1920928966180355e-07
+      },
+      {
+        "version": "optimized",
+        "size": 639,
+        "seed": 7,
+        "elements": 408321,
+        "max_error": 1.1920928966180355e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.018185866666666668,
+        "median_ms": 0.017681066,
+        "stddev_ms": 0.0011870638255920161,
+        "samples_ms": [
+          0.018130133,
+          0.019455999,
+          0.017940266,
+          0.017476266,
+          0.018281601,
+          0.021504002,
+          0.017415466,
+          0.017601067,
+          0.017681066,
+          0.017681066,
+          0.017529601,
+          0.017533867
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.018026133083333333,
+        "median_ms": 0.0176309335,
+        "stddev_ms": 0.0008821070815230851,
+        "samples_ms": [
+          0.019251199,
+          0.0176352,
+          0.018110933,
+          0.017495466,
+          0.017484801,
+          0.017626667,
+          0.017439999,
+          0.0182912,
+          0.017749334,
+          0.017476266,
+          0.020277333,
+          0.017475199
+        ]
+      }
+    },
+    "speedup": 1.008861222903154,
+    "speedup_ci95": [
+      0.9670446910845387,
+      1.0560323943488463
+    ],
+    "elapsed_seconds": 55.64736379997339
+  },
+  {
+    "case": "conv3x3_896",
+    "family": "conv3x3",
+    "size": 896,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "03c1060e597f3799d623db41e4ea44cc51eb8d4360db8ea6b60e481339a6ef30",
+    "output_sha256": "03c1060e597f3799d623db41e4ea44cc51eb8d4360db8ea6b60e481339a6ef30",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 896,
+        "seed": 0,
+        "elements": 802816,
+        "max_error": 1.0596381305738589e-07
+      },
+      {
+        "version": "optimized",
+        "size": 896,
+        "seed": 0,
+        "elements": 802816,
+        "max_error": 1.0596381305738589e-07
+      },
+      {
+        "version": "baseline",
+        "size": 899,
+        "seed": 1,
+        "elements": 808201,
+        "max_error": 1.324547661551989e-07
+      },
+      {
+        "version": "optimized",
+        "size": 899,
+        "seed": 1,
+        "elements": 808201,
+        "max_error": 1.324547661551989e-07
+      },
+      {
+        "version": "baseline",
+        "size": 895,
+        "seed": 7,
+        "elements": 801025,
+        "max_error": 1.0596381294636359e-07
+      },
+      {
+        "version": "optimized",
+        "size": 895,
+        "seed": 7,
+        "elements": 801025,
+        "max_error": 1.0596381294636359e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.036282311416666664,
+        "median_ms": 0.0361632,
+        "stddev_ms": 0.0002935664542931725,
+        "samples_ms": [
+          0.0361536,
+          0.036224,
+          0.0361728,
+          0.036932267,
+          0.036125865,
+          0.036882136,
+          0.036181334,
+          0.036121599,
+          0.036181334,
+          0.036139734,
+          0.036148265,
+          0.036124803
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.036245333166666664,
+        "median_ms": 0.0361791995,
+        "stddev_ms": 0.00012409958414173457,
+        "samples_ms": [
+          0.0361632,
+          0.036369067,
+          0.03613653,
+          0.036181334,
+          0.036177065,
+          0.036121599,
+          0.036342397,
+          0.036317866,
+          0.036133334,
+          0.036514137,
+          0.036166403,
+          0.036321066
+        ]
+      }
+    },
+    "speedup": 1.0010202209986583,
+    "speedup_ci95": [
+      0.9967234444496079,
+      1.0061814703910954
+    ],
+    "elapsed_seconds": 55.63474660000065
+  },
+  {
+    "case": "conv3x3_1280",
+    "family": "conv3x3",
+    "size": 1280,
+    "description": "Zero-padded 3x3 box convolution with direct neighborhood loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "e223837c1d7fe208a7111af84d1e72959ff5d9ddfe3bb513cc04d9009d09217b",
+    "output_sha256": "e223837c1d7fe208a7111af84d1e72959ff5d9ddfe3bb513cc04d9009d09217b",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1638400,
+        "max_error": 1.1920928966180355e-07
+      },
+      {
+        "version": "optimized",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1638400,
+        "max_error": 1.1920928966180355e-07
+      },
+      {
+        "version": "baseline",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1646089,
+        "max_error": 1.1920928977282585e-07
+      },
+      {
+        "version": "optimized",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1646089,
+        "max_error": 1.1920928977282585e-07
+      },
+      {
+        "version": "baseline",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1635841,
+        "max_error": 1.2583202779747893e-07
+      },
+      {
+        "version": "optimized",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1635841,
+        "max_error": 1.2583202779747893e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.069345424,
+        "median_ms": 0.0692784005,
+        "stddev_ms": 0.00022789174583919767,
+        "samples_ms": [
+          0.069278933,
+          0.069282137,
+          0.069222406,
+          0.0699744,
+          0.069227733,
+          0.069277868,
+          0.069102928,
+          0.069223471,
+          0.069549873,
+          0.069284268,
+          0.069276802,
+          0.069444269
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.06926853341666667,
+        "median_ms": 0.0692826695,
+        "stddev_ms": 0.00010261460888946534,
+        "samples_ms": [
+          0.069244795,
+          0.069281071,
+          0.069099739,
+          0.069276802,
+          0.069230929,
+          0.069284268,
+          0.069287464,
+          0.069286399,
+          0.0694272,
+          0.069290668,
+          0.0694272,
+          0.069085866
+        ]
+      }
+    },
+    "speedup": 1.0011100362537029,
+    "speedup_ci95": [
+      0.9994151840021847,
+      1.00330049753929
+    ],
+    "elapsed_seconds": 55.30312139997841
+  },
+  {
+    "case": "saxpy_8192",
+    "family": "saxpy",
+    "size": 8192,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "aece7675607110cd2d82bebdb7180c205e4e6262511b36af09ab1b968dd657c8",
+    "output_sha256": "aece7675607110cd2d82bebdb7180c205e4e6262511b36af09ab1b968dd657c8",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 8192,
+        "seed": 0,
+        "elements": 8192,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 8192,
+        "seed": 0,
+        "elements": 8192,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 8195,
+        "seed": 1,
+        "elements": 8195,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 8195,
+        "seed": 1,
+        "elements": 8195,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 8191,
+        "seed": 7,
+        "elements": 8191,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 8191,
+        "seed": 7,
+        "elements": 8191,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.011070400166666666,
+        "median_ms": 0.010893333,
+        "stddev_ms": 0.002035055076648824,
+        "samples_ms": [
+          0.011000533,
+          0.011941333,
+          0.011127467,
+          0.0158816,
+          0.010240001,
+          0.009491201,
+          0.011527467,
+          0.008244267,
+          0.0099328,
+          0.0092448,
+          0.010786133,
+          0.0134272
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.011395111083333333,
+        "median_ms": 0.0104352,
+        "stddev_ms": 0.005092554486671166,
+        "samples_ms": [
+          0.008328533,
+          0.0081632,
+          0.011537067,
+          0.009860266,
+          0.008884267,
+          0.012341334,
+          0.0268768,
+          0.007636266,
+          0.0112448,
+          0.0109984,
+          0.0105248,
+          0.0103456
+        ]
+      }
+    },
+    "speedup": 0.9715043658379431,
+    "speedup_ci95": [
+      0.7436627606056712,
+      1.2238395725402804
+    ],
+    "elapsed_seconds": 66.33219950000057
+  },
+  {
+    "case": "saxpy_32768",
+    "family": "saxpy",
+    "size": 32768,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "8178b03d513d4d226e2b66f495da780e4be0b0bca5472bdf6299fe2e26f0576a",
+    "output_sha256": "8178b03d513d4d226e2b66f495da780e4be0b0bca5472bdf6299fe2e26f0576a",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 32768,
+        "seed": 0,
+        "elements": 32768,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 32768,
+        "seed": 0,
+        "elements": 32768,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 32771,
+        "seed": 1,
+        "elements": 32771,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 32771,
+        "seed": 1,
+        "elements": 32771,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 32767,
+        "seed": 7,
+        "elements": 32767,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 32767,
+        "seed": 7,
+        "elements": 32767,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.01144728875,
+        "median_ms": 0.0112522665,
+        "stddev_ms": 0.0031192797302131703,
+        "samples_ms": [
+          0.009147733,
+          0.020290133,
+          0.011195733,
+          0.0096512,
+          0.0093216,
+          0.012684801,
+          0.0113088,
+          0.011741866,
+          0.011981866,
+          0.012208,
+          0.009386667,
+          0.008449066
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.013342933416666666,
+        "median_ms": 0.011368533,
+        "stddev_ms": 0.005916079019836863,
+        "samples_ms": [
+          0.010869334,
+          0.011451733,
+          0.012765867,
+          0.011285333,
+          0.009352533,
+          0.0106496,
+          0.011069867,
+          0.009276801,
+          0.019398399,
+          0.030220801,
+          0.0121024,
+          0.011672533
+        ]
+      }
+    },
+    "speedup": 0.8579289420496684,
+    "speedup_ci95": [
+      0.6505845540109817,
+      1.1224633334093657
+    ],
+    "elapsed_seconds": 70.98500350001268
+  },
+  {
+    "case": "saxpy_131072",
+    "family": "saxpy",
+    "size": 131072,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "1f0ca35c93769ca5d80d995ccbda74cb4220c3c0445e8419c1209bc9fdc7c4f5",
+    "output_sha256": "1f0ca35c93769ca5d80d995ccbda74cb4220c3c0445e8419c1209bc9fdc7c4f5",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 131072,
+        "seed": 0,
+        "elements": 131072,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 131072,
+        "seed": 0,
+        "elements": 131072,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 131075,
+        "seed": 1,
+        "elements": 131075,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 131075,
+        "seed": 1,
+        "elements": 131075,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 131071,
+        "seed": 7,
+        "elements": 131071,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 131071,
+        "seed": 7,
+        "elements": 131071,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.010611733333333333,
+        "median_ms": 0.010980267,
+        "stddev_ms": 0.001172441034292621,
+        "samples_ms": [
+          0.011934933,
+          0.010130133,
+          0.010677334,
+          0.008549334,
+          0.009079467,
+          0.009415466,
+          0.0112832,
+          0.012081067,
+          0.009908267,
+          0.011434666,
+          0.011451733,
+          0.0113952
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.01050942225,
+        "median_ms": 0.0099429335,
+        "stddev_ms": 0.002032893631259063,
+        "samples_ms": [
+          0.008605867,
+          0.008328533,
+          0.010558933,
+          0.012272,
+          0.009099734,
+          0.014004266,
+          0.009326934,
+          0.012219733,
+          0.0131072,
+          0.008337067,
+          0.008769067,
+          0.011483733
+        ]
+      }
+    },
+    "speedup": 1.009735176768003,
+    "speedup_ci95": [
+      0.8936389013500002,
+      1.1387038104684097
+    ],
+    "elapsed_seconds": 70.17485019998276
+  },
+  {
+    "case": "saxpy_524288",
+    "family": "saxpy",
+    "size": 524288,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "a54728c6297bef8caa2c8bbd52b3a6fa70e553cf3a20623f68031b675b1f8156",
+    "output_sha256": "a54728c6297bef8caa2c8bbd52b3a6fa70e553cf3a20623f68031b675b1f8156",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 524288,
+        "seed": 0,
+        "elements": 524288,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 524288,
+        "seed": 0,
+        "elements": 524288,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 524291,
+        "seed": 1,
+        "elements": 524291,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 524291,
+        "seed": 1,
+        "elements": 524291,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 524287,
+        "seed": 7,
+        "elements": 524287,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 524287,
+        "seed": 7,
+        "elements": 524287,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.02044817725,
+        "median_ms": 0.016768533000000002,
+        "stddev_ms": 0.008220616574261073,
+        "samples_ms": [
+          0.039697066,
+          0.013409066,
+          0.029695999,
+          0.030445866,
+          0.016110934,
+          0.0165888,
+          0.016948266,
+          0.018431999,
+          0.016042667,
+          0.013995733,
+          0.015769599,
+          0.018242132
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.016263555333333332,
+        "median_ms": 0.016172265499999998,
+        "stddev_ms": 0.0018035493123759318,
+        "samples_ms": [
+          0.016797867,
+          0.015774934,
+          0.015892265,
+          0.019813333,
+          0.016520534,
+          0.017423999,
+          0.0142656,
+          0.018709334,
+          0.015374933,
+          0.014648532,
+          0.013489067,
+          0.016452266
+        ]
+      }
+    },
+    "speedup": 1.2573005613409747,
+    "speedup_ci95": [
+      1.0074883725542756,
+      1.560848788729112
+    ],
+    "elapsed_seconds": 74.38630049998756
+  },
+  {
+    "case": "saxpy_2097152",
+    "family": "saxpy",
+    "size": 2097152,
+    "description": "Scalar pointwise SAXPY; no explicit vectorized loads.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "07b1ae928e3b093f418b48136cd218d83f3c4753bd1e76be2a19e27decff1303",
+    "output_sha256": "07b1ae928e3b093f418b48136cd218d83f3c4753bd1e76be2a19e27decff1303",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 2097152,
+        "seed": 0,
+        "elements": 2097152,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 2097152,
+        "seed": 0,
+        "elements": 2097152,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 2097155,
+        "seed": 1,
+        "elements": 2097155,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 2097155,
+        "seed": 1,
+        "elements": 2097155,
+        "max_error": 0.0
+      },
+      {
+        "version": "baseline",
+        "size": 2097151,
+        "seed": 7,
+        "elements": 2097151,
+        "max_error": 0.0
+      },
+      {
+        "version": "optimized",
+        "size": 2097151,
+        "seed": 7,
+        "elements": 2097151,
+        "max_error": 0.0
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.04997626583333333,
+        "median_ms": 0.0485216005,
+        "stddev_ms": 0.004451523210346501,
+        "samples_ms": [
+          0.048773333,
+          0.048469331,
+          0.048257064,
+          0.0484352,
+          0.048525866,
+          0.064034134,
+          0.048653863,
+          0.048485335,
+          0.048489597,
+          0.048517335,
+          0.050039466,
+          0.049034666
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.05410239958333333,
+        "median_ms": 0.0487482675,
+        "stddev_ms": 0.010641448248395476,
+        "samples_ms": [
+          0.048742402,
+          0.08198826,
+          0.048469331,
+          0.048754133,
+          0.048643198,
+          0.063733332,
+          0.048812799,
+          0.048685867,
+          0.064870402,
+          0.049152002,
+          0.048634667,
+          0.048742402
+        ]
+      }
+    },
+    "speedup": 0.9237347366886277,
+    "speedup_ci95": [
+      0.8191660604154006,
+      1.0259897721582545
+    ],
+    "elapsed_seconds": 85.30380330001935
+  },
+  {
+    "case": "poly5_8192",
+    "family": "poly5",
+    "size": 8192,
+    "description": "Pointwise degree-five polynomial using a short Horner loop.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "74e63e3bc795a6793c6afcf7f6c885be157befaeb62b6fdc2ff1f0740cd1f2f3",
+    "output_sha256": "74e63e3bc795a6793c6afcf7f6c885be157befaeb62b6fdc2ff1f0740cd1f2f3",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 8192,
+        "seed": 0,
+        "elements": 8192,
+        "max_error": 4.25543341897594e-07
+      },
+      {
+        "version": "optimized",
+        "size": 8192,
+        "seed": 0,
+        "elements": 8192,
+        "max_error": 4.25543341897594e-07
+      },
+      {
+        "version": "baseline",
+        "size": 8195,
+        "seed": 1,
+        "elements": 8195,
+        "max_error": 3.8314067296596477e-07
+      },
+      {
+        "version": "optimized",
+        "size": 8195,
+        "seed": 1,
+        "elements": 8195,
+        "max_error": 3.8314067296596477e-07
+      },
+      {
+        "version": "baseline",
+        "size": 8191,
+        "seed": 7,
+        "elements": 8191,
+        "max_error": 3.4593101716495767e-07
+      },
+      {
+        "version": "optimized",
+        "size": 8191,
+        "seed": 7,
+        "elements": 8191,
+        "max_error": 3.4593101716495767e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.0137171555,
+        "median_ms": 0.0113690675,
+        "stddev_ms": 0.006532882129930201,
+        "samples_ms": [
+          0.029507199,
+          0.025258666,
+          0.0109248,
+          0.010283734,
+          0.008806399,
+          0.010722133,
+          0.011209601,
+          0.0122368,
+          0.0097024,
+          0.012629333,
+          0.011796267,
+          0.011528534
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.012208266583333334,
+        "median_ms": 0.010666667000000001,
+        "stddev_ms": 0.0056282564085532415,
+        "samples_ms": [
+          0.010904534,
+          0.010948267,
+          0.008338134,
+          0.009345067,
+          0.029578665,
+          0.012973866,
+          0.011927467,
+          0.0104288,
+          0.010059733,
+          0.009762133,
+          0.0098048,
+          0.012427733
+        ]
+      }
+    },
+    "speedup": 1.1235956723558604,
+    "speedup_ci95": [
+      0.785827651909095,
+      1.5737246391949788
+    ],
+    "elapsed_seconds": 72.11620180000318
+  },
+  {
+    "case": "poly5_32768",
+    "family": "poly5",
+    "size": 32768,
+    "description": "Pointwise degree-five polynomial using a short Horner loop.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "223c6976cb33eca37b03258f330de910fff1a7cfa1906923a783eff82dc03001",
+    "output_sha256": "223c6976cb33eca37b03258f330de910fff1a7cfa1906923a783eff82dc03001",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 32768,
+        "seed": 0,
+        "elements": 32768,
+        "max_error": 4.412795533426106e-07
+      },
+      {
+        "version": "optimized",
+        "size": 32768,
+        "seed": 0,
+        "elements": 32768,
+        "max_error": 4.412795533426106e-07
+      },
+      {
+        "version": "baseline",
+        "size": 32771,
+        "seed": 1,
+        "elements": 32771,
+        "max_error": 3.8314067296596477e-07
+      },
+      {
+        "version": "optimized",
+        "size": 32771,
+        "seed": 1,
+        "elements": 32771,
+        "max_error": 3.8314067296596477e-07
+      },
+      {
+        "version": "baseline",
+        "size": 32767,
+        "seed": 7,
+        "elements": 32767,
+        "max_error": 4.4036960744620046e-07
+      },
+      {
+        "version": "optimized",
+        "size": 32767,
+        "seed": 7,
+        "elements": 32767,
+        "max_error": 4.4036960744620046e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.011640711166666666,
+        "median_ms": 0.0115029335,
+        "stddev_ms": 0.0023603589973872747,
+        "samples_ms": [
+          0.0132384,
+          0.015496533,
+          0.0085632,
+          0.012908801,
+          0.011332267,
+          0.0087296,
+          0.008670933,
+          0.010795733,
+          0.0108544,
+          0.015367466,
+          0.0116736,
+          0.012057601
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.014964088916666667,
+        "median_ms": 0.011508266999999999,
+        "stddev_ms": 0.008422971629541112,
+        "samples_ms": [
+          0.009597867,
+          0.009725867,
+          0.014609067,
+          0.011810133,
+          0.034460798,
+          0.030724267,
+          0.01016,
+          0.011206401,
+          0.011186134,
+          0.012424533,
+          0.009825067,
+          0.013838933
+        ]
+      }
+    },
+    "speedup": 0.7779097833147398,
+    "speedup_ci95": [
+      0.5632954936629231,
+      1.0690390857006873
+    ],
+    "elapsed_seconds": 72.43740830000024
+  },
+  {
+    "case": "poly5_131072",
+    "family": "poly5",
+    "size": 131072,
+    "description": "Pointwise degree-five polynomial using a short Horner loop.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "993799519cdff5cee3905f706b35b931045229d06daf65347ebbe0c3300082f9",
+    "output_sha256": "993799519cdff5cee3905f706b35b931045229d06daf65347ebbe0c3300082f9",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 131072,
+        "seed": 0,
+        "elements": 131072,
+        "max_error": 4.412795533426106e-07
+      },
+      {
+        "version": "optimized",
+        "size": 131072,
+        "seed": 0,
+        "elements": 131072,
+        "max_error": 4.412795533426106e-07
+      },
+      {
+        "version": "baseline",
+        "size": 131075,
+        "seed": 1,
+        "elements": 131075,
+        "max_error": 5.405479681641623e-07
+      },
+      {
+        "version": "optimized",
+        "size": 131075,
+        "seed": 1,
+        "elements": 131075,
+        "max_error": 5.405479681641623e-07
+      },
+      {
+        "version": "baseline",
+        "size": 131071,
+        "seed": 7,
+        "elements": 131071,
+        "max_error": 4.4036960744620046e-07
+      },
+      {
+        "version": "optimized",
+        "size": 131071,
+        "seed": 7,
+        "elements": 131071,
+        "max_error": 4.4036960744620046e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.013020977833333334,
+        "median_ms": 0.011683199500000001,
+        "stddev_ms": 0.004375853205606398,
+        "samples_ms": [
+          0.009457067,
+          0.013121067,
+          0.011890133,
+          0.020206934,
+          0.0141824,
+          0.023205334,
+          0.010512,
+          0.008755201,
+          0.011464533,
+          0.011476266,
+          0.012082133,
+          0.009898666
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.014492178,
+        "median_ms": 0.012490134,
+        "stddev_ms": 0.007531244852648936,
+        "samples_ms": [
+          0.012750934,
+          0.011684267,
+          0.014185601,
+          0.013380266,
+          0.0215776,
+          0.0092064,
+          0.012229334,
+          0.013229867,
+          0.010135467,
+          0.036008533,
+          0.009947733,
+          0.009570134
+        ]
+      }
+    },
+    "speedup": 0.8984831564540081,
+    "speedup_ci95": [
+      0.6425522382587447,
+      1.2409581772040597
+    ],
+    "elapsed_seconds": 71.38324749999447
+  },
+  {
+    "case": "poly5_524288",
+    "family": "poly5",
+    "size": 524288,
+    "description": "Pointwise degree-five polynomial using a short Horner loop.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "36ff25bef6a8b7dba68f086b697da70f73c609cf953adac2802325f23bc8420f",
+    "output_sha256": "36ff25bef6a8b7dba68f086b697da70f73c609cf953adac2802325f23bc8420f",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 524288,
+        "seed": 0,
+        "elements": 524288,
+        "max_error": 6.299167472079148e-07
+      },
+      {
+        "version": "optimized",
+        "size": 524288,
+        "seed": 0,
+        "elements": 524288,
+        "max_error": 6.299167472079148e-07
+      },
+      {
+        "version": "baseline",
+        "size": 524291,
+        "seed": 1,
+        "elements": 524291,
+        "max_error": 5.405479681641623e-07
+      },
+      {
+        "version": "optimized",
+        "size": 524291,
+        "seed": 1,
+        "elements": 524291,
+        "max_error": 5.405479681641623e-07
+      },
+      {
+        "version": "baseline",
+        "size": 524287,
+        "seed": 7,
+        "elements": 524287,
+        "max_error": 6.299167472079148e-07
+      },
+      {
+        "version": "optimized",
+        "size": 524287,
+        "seed": 7,
+        "elements": 524287,
+        "max_error": 6.299167472079148e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.020111555666666666,
+        "median_ms": 0.0171391995,
+        "stddev_ms": 0.008103763373738238,
+        "samples_ms": [
+          0.026692268,
+          0.014014933,
+          0.014010667,
+          0.017144533,
+          0.041437868,
+          0.01536,
+          0.017133866,
+          0.0190624,
+          0.015206399,
+          0.015534934,
+          0.027784534,
+          0.017956266
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.017398489,
+        "median_ms": 0.015434133499999999,
+        "stddev_ms": 0.005125184420182982,
+        "samples_ms": [
+          0.014472533,
+          0.013808,
+          0.017136,
+          0.014962134,
+          0.027672533,
+          0.015906133,
+          0.028398933,
+          0.013755734,
+          0.016289067,
+          0.013997867,
+          0.0148288,
+          0.017554134
+        ]
+      }
+    },
+    "speedup": 1.1559369130656498,
+    "speedup_ci95": [
+      0.8871768284430778,
+      1.5098632220365904
+    ],
+    "elapsed_seconds": 74.72725660001743
+  },
+  {
+    "case": "poly5_2097152",
+    "family": "poly5",
+    "size": 2097152,
+    "description": "Pointwise degree-five polynomial using a short Horner loop.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "c2d346fba72b0efd7641a63cbe77bee74d1d7847b3ff21964c5ba97d3c705fdc",
+    "output_sha256": "c2d346fba72b0efd7641a63cbe77bee74d1d7847b3ff21964c5ba97d3c705fdc",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 2097152,
+        "seed": 0,
+        "elements": 2097152,
+        "max_error": 6.299167472079148e-07
+      },
+      {
+        "version": "optimized",
+        "size": 2097152,
+        "seed": 0,
+        "elements": 2097152,
+        "max_error": 6.299167472079148e-07
+      },
+      {
+        "version": "baseline",
+        "size": 2097155,
+        "seed": 1,
+        "elements": 2097155,
+        "max_error": 5.662729920530296e-07
+      },
+      {
+        "version": "optimized",
+        "size": 2097155,
+        "seed": 1,
+        "elements": 2097155,
+        "max_error": 5.662729920530296e-07
+      },
+      {
+        "version": "baseline",
+        "size": 2097151,
+        "seed": 7,
+        "elements": 2097151,
+        "max_error": 6.299167472079148e-07
+      },
+      {
+        "version": "optimized",
+        "size": 2097151,
+        "seed": 7,
+        "elements": 2097151,
+        "max_error": 6.299167472079148e-07
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.0598426675,
+        "median_ms": 0.054841065499999994,
+        "stddev_ms": 0.013549313293369484,
+        "samples_ms": [
+          0.081851736,
+          0.048534401,
+          0.048414934,
+          0.063829333,
+          0.077290669,
+          0.048264537,
+          0.048407469,
+          0.080646403,
+          0.062638931,
+          0.060893867,
+          0.048788264,
+          0.048551466
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.061223733083333336,
+        "median_ms": 0.063083734,
+        "stddev_ms": 0.012293648403262355,
+        "samples_ms": [
+          0.080086395,
+          0.062532268,
+          0.048919465,
+          0.049146667,
+          0.064596266,
+          0.0636352,
+          0.049002666,
+          0.048839465,
+          0.077209599,
+          0.077747203,
+          0.064044803,
+          0.0489248
+        ]
+      }
+    },
+    "speedup": 0.977442316667402,
+    "speedup_ci95": [
+      0.8346263867482654,
+      1.1580126708064817
+    ],
+    "elapsed_seconds": 80.8900941000029
+  },
+  {
+    "case": "row_softmax_192",
+    "family": "row_softmax",
+    "size": 192,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "f07490e5cf8c9f1d31c45afcde95574fc316d23d7d6703ea2c6d81f8823ece01",
+    "output_sha256": "f07490e5cf8c9f1d31c45afcde95574fc316d23d7d6703ea2c6d81f8823ece01",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 6.8543296715545265e-09
+      },
+      {
+        "version": "optimized",
+        "size": 192,
+        "seed": 0,
+        "elements": 36864,
+        "max_error": 6.8543296715545265e-09
+      },
+      {
+        "version": "baseline",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 1.0263974614677096e-08
+      },
+      {
+        "version": "optimized",
+        "size": 195,
+        "seed": 1,
+        "elements": 38025,
+        "max_error": 1.0263974614677096e-08
+      },
+      {
+        "version": "baseline",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 7.94645383349335e-09
+      },
+      {
+        "version": "optimized",
+        "size": 191,
+        "seed": 7,
+        "elements": 36481,
+        "max_error": 7.94645383349335e-09
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.11422728866666666,
+        "median_ms": 0.1166127995,
+        "stddev_ms": 0.008813211765552062,
+        "samples_ms": [
+          0.118165337,
+          0.13215147,
+          0.117556266,
+          0.103435732,
+          0.119450666,
+          0.104606934,
+          0.116844796,
+          0.115992531,
+          0.119184002,
+          0.103347197,
+          0.116380803,
+          0.10361173
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.11870391058333334,
+        "median_ms": 0.1176992025,
+        "stddev_ms": 0.009223368559607162,
+        "samples_ms": [
+          0.131481603,
+          0.119081602,
+          0.131400526,
+          0.104268797,
+          0.118727468,
+          0.11612267,
+          0.117166929,
+          0.115515731,
+          0.117707737,
+          0.10386987,
+          0.117690668,
+          0.131413326
+        ]
+      }
+    },
+    "speedup": 0.9622874941973881,
+    "speedup_ci95": [
+      0.9060925620051754,
+      1.022511994679292
+    ],
+    "elapsed_seconds": 72.68992200001958
+  },
+  {
+    "case": "row_softmax_384",
+    "family": "row_softmax",
+    "size": 384,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "f4f6f29baa4e0f84c3d26b3bc5a45fbfb8a99204c520fc5acaab663e6d939ce2",
+    "output_sha256": "f4f6f29baa4e0f84c3d26b3bc5a45fbfb8a99204c520fc5acaab663e6d939ce2",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 384,
+        "seed": 0,
+        "elements": 147456,
+        "max_error": 6.208212764181875e-09
+      },
+      {
+        "version": "optimized",
+        "size": 384,
+        "seed": 0,
+        "elements": 147456,
+        "max_error": 6.208212764181875e-09
+      },
+      {
+        "version": "baseline",
+        "size": 387,
+        "seed": 1,
+        "elements": 149769,
+        "max_error": 7.108012109457995e-09
+      },
+      {
+        "version": "optimized",
+        "size": 387,
+        "seed": 1,
+        "elements": 149769,
+        "max_error": 7.108012109457995e-09
+      },
+      {
+        "version": "baseline",
+        "size": 383,
+        "seed": 7,
+        "elements": 146689,
+        "max_error": 6.072518415195516e-09
+      },
+      {
+        "version": "optimized",
+        "size": 383,
+        "seed": 7,
+        "elements": 146689,
+        "max_error": 6.072518415195516e-09
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.2527045371666667,
+        "median_ms": 0.25303040450000003,
+        "stddev_ms": 0.011269731815820354,
+        "samples_ms": [
+          0.252586663,
+          0.257179737,
+          0.239820793,
+          0.24028267,
+          0.267739743,
+          0.239656523,
+          0.251203209,
+          0.253652275,
+          0.268240005,
+          0.239988267,
+          0.268630415,
+          0.253474146
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.23987164091666666,
+        "median_ms": 0.2415173275,
+        "stddev_ms": 0.01408321315373362,
+        "samples_ms": [
+          0.252874672,
+          0.227058142,
+          0.25352639,
+          0.226418123,
+          0.252412796,
+          0.252586663,
+          0.239060253,
+          0.239694923,
+          0.252859741,
+          0.243339732,
+          0.2275424,
+          0.211085856
+        ]
+      }
+    },
+    "speedup": 1.053499013893261,
+    "speedup_ci95": [
+      1.0139271618146461,
+      1.0987471578244012
+    ],
+    "elapsed_seconds": 74.02809680000064
+  },
+  {
+    "case": "row_softmax_640",
+    "family": "row_softmax",
+    "size": 640,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.164,
+    "selected_variant": "input_i7_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 66.01596530000097
+  },
+  {
+    "case": "row_softmax_896",
+    "family": "row_softmax",
+    "size": 896,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+    "status": "failed",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.017,
+    "selected_variant": "input_i5_loop_unrolling",
+    "host_contract_unchanged": false,
+    "error": "Candidate changed host harness or kernel signature",
+    "elapsed_seconds": 69.10693740000715
+  },
+  {
+    "case": "row_softmax_1280",
+    "family": "row_softmax",
+    "size": 1280,
+    "description": "Numerically stable softmax; serial max/sum/output passes per row.",
+    "status": "unchanged",
+    "cli_exit_code": 0,
+    "profiling_blocked": true,
+    "cli_speedup": 1.0,
+    "selected_variant": "None",
+    "host_contract_unchanged": true,
+    "input_sha256": "4685fb32d98f817110626cf9554fba0c7d7c1a4c6542fa34c5cdf9b8e7570ed6",
+    "output_sha256": "4685fb32d98f817110626cf9554fba0c7d7c1a4c6542fa34c5cdf9b8e7570ed6",
+    "source_changed": false,
+    "cpu_checks": [
+      {
+        "version": "baseline",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1638400,
+        "max_error": 4.073509551590429e-09
+      },
+      {
+        "version": "optimized",
+        "size": 1280,
+        "seed": 0,
+        "elements": 1638400,
+        "max_error": 4.073509551590429e-09
+      },
+      {
+        "version": "baseline",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1646089,
+        "max_error": 3.4911931002384877e-09
+      },
+      {
+        "version": "optimized",
+        "size": 1283,
+        "seed": 1,
+        "elements": 1646089,
+        "max_error": 3.4911931002384877e-09
+      },
+      {
+        "version": "baseline",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1635841,
+        "max_error": 3.3143507818887002e-09
+      },
+      {
+        "version": "optimized",
+        "size": 1279,
+        "seed": 7,
+        "elements": 1635841,
+        "max_error": 3.3143507818887002e-09
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "mean_ms": 0.90761920825,
+        "median_ms": 0.9130149485,
+        "stddev_ms": 0.01398209525004971,
+        "samples_ms": [
+          0.913817585,
+          0.914163232,
+          0.900164306,
+          0.886838377,
+          0.913408041,
+          0.88416642,
+          0.926946104,
+          0.927633107,
+          0.913868785,
+          0.900915205,
+          0.912621856,
+          0.896887481
+        ]
+      },
+      "optimized": {
+        "mean_ms": 0.9115432005,
+        "median_ms": 0.914001584,
+        "stddev_ms": 0.005701333837350833,
+        "samples_ms": [
+          0.914721072,
+          0.899481595,
+          0.913346171,
+          0.914588809,
+          0.910813868,
+          0.913414359,
+          0.914837301,
+          0.899704576,
+          0.914785087,
+          0.914706111,
+          0.914844811,
+          0.913274646
+        ]
+      }
+    },
+    "speedup": 0.9956952207554752,
+    "speedup_ci95": [
+      0.986546096654108,
+      1.0047397164057912
+    ],
+    "elapsed_seconds": 85.30270699999528
+  }
+]

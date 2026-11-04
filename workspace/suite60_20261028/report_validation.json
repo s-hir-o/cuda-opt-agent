@@ -1,0 +1,20 @@
+{
+  "report": "D:\\work\\cuda_performace analyser\\workspace\\suite60_20261028\\CUDA_60_Case_Optimization_Report.docx",
+  "bytes": 388747,
+  "cases": 60,
+  "counts": {
+    "improved": 5,
+    "failed": 10,
+    "unchanged": 45
+  },
+  "cpu_checks": 300,
+  "embedded_graphs": 4,
+  "zip_crc_valid": true,
+  "xml_well_formed": true,
+  "python_docx_reopen_passed": true,
+  "all_60_case_names_present": true,
+  "all_60_cpu_correctness_established": false,
+  "word_render_succeeded": false,
+  "word_render_limitation": "Word COM activation failed with 0x80070520: specified logon session does not exist. Visual pagination not verified.",
+  "report_sha256": "de01150d66b8df153440afef63e55b74095bd9aee24483f94abf67eb9a979f60"
+}

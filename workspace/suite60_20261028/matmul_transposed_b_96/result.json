@@ -1,0 +1,14 @@
+{
+  "case": "matmul_transposed_b_96",
+  "family": "matmul_transposed_b",
+  "size": 96,
+  "description": "Pairwise row dot products; each thread walks two rows.",
+  "status": "failed",
+  "cli_exit_code": 0,
+  "profiling_blocked": true,
+  "cli_speedup": 1.021,
+  "selected_variant": "input_i4_loop_unrolling",
+  "host_contract_unchanged": false,
+  "error": "Candidate changed host harness or kernel signature",
+  "elapsed_seconds": 43.030045899999095
+}
