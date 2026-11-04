@@ -1,0 +1,36 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+.cudenv/
+*.egg-info/
+.pytest_cache/
+.tmp_pytest*/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+# Local credentials and settings
+.env
+.env.*
+!.env.example
+config/
+.agents/
+.codex/
+.publish/
+# Generated CUDA and runtime artifacts
+*.exe
+*.dll
+*.pyd
+*.cubin
+*.ptx
+*.bin
+*.db
+*.db-*
+*.log
+artifacts/
+workspace/*
+!workspace/suite60_20261028/
+workspace/suite60_20261028/report_dependencies/
+workspace/suite60_20261028/audit/
