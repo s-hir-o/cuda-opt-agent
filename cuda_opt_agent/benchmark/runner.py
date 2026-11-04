@@ -9,6 +9,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from cuda_opt_agent.benchmark.stats import compute_timing_stats, is_stable
+from cuda_opt_agent.benchmark.timer import CudaEventTimer, HostTimer, KernelTimer
 from cuda_opt_agent.core.exceptions import BenchmarkError
 from cuda_opt_agent.schemas.benchmark import BenchmarkResult, MeasurementStrategy
 
@@ -124,3 +125,37 @@ class BenchmarkRunner(ABC):
     @abstractmethod
     async def is_available(self) -> bool:
         """Return True if the benchmark infrastructure is ready."""
+
+
+class ExecutableBenchmarkRunner(BenchmarkRunner):
+    """Benchmark a host-runnable CUDA executable.
+
+    The executable is expected to run the kernel and either:
+    - complete normally, for host wall-clock timing, or
+    - print a final numeric millisecond value, for CUDA-event timing.
+    """
+
+    def __init__(self, use_cuda_events: bool = False) -> None:
+        self._timer: KernelTimer
+        if use_cuda_events:
+            self._timer = CudaEventTimer()
+            self.MEASUREMENT_STRATEGY = MeasurementStrategy.CUDA_EVENT
+        else:
+            self._timer = HostTimer()
+            self.MEASUREMENT_STRATEGY = MeasurementStrategy.HOST
+
+    async def run_kernel(
+        self,
+        binary_path: str,
+        kernel_name: str | None = None,
+        timeout_s: float = 120.0,
+    ) -> list[float]:
+        measurement = await self._timer.measure(
+            binary_path=binary_path,
+            kernel_name=kernel_name,
+            timeout_s=timeout_s,
+        )
+        return [measurement.elapsed_ms]
+
+    async def is_available(self) -> bool:
+        return True

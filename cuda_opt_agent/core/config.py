@@ -44,7 +44,7 @@ class ProfilingConfig(BaseModel):
 class BenchmarkConfig(BaseModel):
     warmup_iterations: int = 3
     timing_iterations: int = 10
-    use_cuda_events: bool = True
+    use_cuda_events: bool = False
     timeout_seconds: int = 120
 
 
@@ -53,10 +53,12 @@ class LLMProviderConfig(BaseModel):
     max_tokens: int = 4096
     temperature: float = 0.3
     base_url: str | None = None
+    api_key_env: str | None = None
+    timeout_seconds: float = 300.0
 
 
 class LLMConfig(BaseModel):
-    provider: Literal["claude", "openai", "gemini", "ollama"] = "claude"
+    provider: Literal["claude", "openai", "gemini", "ollama", "vllm"] = "claude"
     claude: LLMProviderConfig = Field(
         default_factory=lambda: LLMProviderConfig(model="claude-sonnet-4-20250514")
     )
@@ -68,6 +70,13 @@ class LLMConfig(BaseModel):
     )
     ollama: LLMProviderConfig = Field(
         default_factory=lambda: LLMProviderConfig(model="codellama:34b")
+    )
+    vllm: LLMProviderConfig = Field(
+        default_factory=lambda: LLMProviderConfig(
+            model="ByteDance-Seed/cudaLLM-8B",
+            base_url="http://localhost:8000/v1",
+            temperature=0.2,
+        )
     )
 
 

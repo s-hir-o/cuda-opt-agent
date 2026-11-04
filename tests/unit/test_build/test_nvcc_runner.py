@@ -1,5 +1,7 @@
 """Tests for NVCCRunner compilation and diagnostic parsing."""
 
+import os
+
 import pytest
 
 from cuda_opt_agent.build.nvcc_runner import NVCCRunner, parse_diagnostics
@@ -137,6 +139,11 @@ class TestNVCCRunnerInit:
         runner = NVCCRunner(config)
         assert runner._nvcc_path == "/usr/local/cuda/bin/nvcc"
         assert runner._default_arch == "sm_89"
+
+    def test_windows_uses_conforming_msvc_preprocessor(self):
+        flags = NVCCRunner(CompilerConfig())._build_flags()
+
+        assert ("-Xcompiler=/Zc:preprocessor" in flags) is (os.name == "nt")
 
 
 # ── Availability ───────────────────────────────────────────────

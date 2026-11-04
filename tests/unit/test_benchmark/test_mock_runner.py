@@ -12,9 +12,11 @@ Covers:
 
 import pytest
 
+from cuda_opt_agent.benchmark.runner import ExecutableBenchmarkRunner
 from cuda_opt_agent.core.exceptions import BenchmarkError
 from cuda_opt_agent.benchmark.mock_runner import MockBenchmarkRunner, _stable_hash
 from cuda_opt_agent.benchmark.runner import BenchmarkRunner
+from cuda_opt_agent.benchmark.timer import TimingMeasurement
 from cuda_opt_agent.schemas.benchmark import MeasurementStrategy
 
 
@@ -439,6 +441,34 @@ class TestMeasurementStrategy:
     def test_from_raw_invalid_raises(self):
         with pytest.raises(ValueError):
             MeasurementStrategy.from_raw("invalid_strategy")
+
+
+class TestExecutableBenchmarkRunner:
+
+    @pytest.mark.asyncio
+    async def test_host_runner_uses_timer_measurement(self):
+        class FakeTimer:
+            async def measure(self, binary_path, kernel_name=None, timeout_s=120.0):
+                assert binary_path == "kernel_exec"
+                assert kernel_name == "kernel"
+                assert timeout_s == 5.0
+                return TimingMeasurement(elapsed_ms=1.25, strategy="host")
+
+        runner = ExecutableBenchmarkRunner(use_cuda_events=False)
+        runner._timer = FakeTimer()
+
+        times = await runner.run_kernel(
+            "kernel_exec",
+            kernel_name="kernel",
+            timeout_s=5.0,
+        )
+
+        assert times == [1.25]
+        assert runner.MEASUREMENT_STRATEGY == MeasurementStrategy.HOST
+
+    def test_cuda_event_runner_strategy(self):
+        runner = ExecutableBenchmarkRunner(use_cuda_events=True)
+        assert runner.MEASUREMENT_STRATEGY == MeasurementStrategy.CUDA_EVENT
 
 
 # ── Stability Validation (Critical Fix #5) ────────────────────

@@ -7,7 +7,10 @@ import json
 import pytest
 
 from cuda_opt_agent.profiling.mock_profiler import MockProfiler
+from cuda_opt_agent.profiling.ncu_runner import NCUProfiler, NCURunner
+from cuda_opt_agent.core.config import ProfilingConfig
 from cuda_opt_agent.profiling.metrics_validator import validate_metrics
+from cuda_opt_agent.schemas.compilation import CompilationResult
 from cuda_opt_agent.schemas.kernel import KernelLanguage, KernelSource, KernelVariant
 from cuda_opt_agent.schemas.metrics import ProfileMetrics
 
@@ -155,6 +158,86 @@ class TestMockProfiler:
             assert warnings == [], (
                 f"Preset '{preset_name}' has validation warnings: {warnings}"
             )
+
+
+class TestNCUProfiler:
+
+    def test_profiles_compiled_executable_with_ncu_csv(self):
+        class FakeNVCC:
+            async def is_available(self):
+                return True
+
+            async def compile_executable(self, kernel, arch):
+                return CompilationResult(
+                    success=True,
+                    source_code=kernel.source_code,
+                    arch=arch,
+                    binary_path="kernel_exec",
+                )
+
+        class FakeNCU:
+            async def is_available(self):
+                return True
+
+            async def run_ncu(self, binary_path, kernel_name=None, arch="sm_80"):
+                assert binary_path == "kernel_exec"
+                assert kernel_name == "vecadd"
+                assert arch == "sm_80"
+                return (
+                    '"Metric Name","Metric Value","Metric Unit"\n'
+                    '"gpu__time_duration.sum","100000","nsecond"\n'
+                    '"sm__throughput.avg_pct_of_peak_sustained_elapsed","50","%"\n'
+                )
+
+        kernel = KernelSource(
+            name="vecadd.cu",
+            language=KernelLanguage.CUDA,
+            source_code="__global__ void vecadd() {}",
+            entry_point="vecadd",
+        )
+        profiler = NCUProfiler(ncu_runner=FakeNCU(), nvcc_runner=FakeNVCC())
+
+        metrics = _run(profiler.profile(kernel, run_id="r1", arch="sm_80"))
+
+        assert metrics.kernel_name == "vecadd"
+        assert metrics.gpu_time_us == 100.0
+        assert metrics.sm_throughput == 50.0
+        assert metrics.arch == "sm_80"
+        assert metrics.metadata["run_id"] == "r1"
+        assert metrics.metadata["binary_path"] == "kernel_exec"
+
+
+def test_ncu_runner_uses_one_metrics_option(monkeypatch):
+    captured = []
+
+    class FakeProcess:
+        returncode = 0
+
+        async def communicate(self):
+            return b"metric output", b""
+
+    async def fake_subprocess(*args, **kwargs):
+        captured.extend(args)
+        return FakeProcess()
+
+    monkeypatch.setattr(asyncio, "create_subprocess_exec", fake_subprocess)
+    runner = NCURunner(ProfilingConfig(metrics=["metric_a", "metric_b"]))
+
+    assert _run(runner.run_ncu("kernel.exe")) == "metric output"
+    assert captured.count("--metrics") == 1
+    assert captured[captured.index("--metrics") + 1] == "metric_a,metric_b"
+
+
+def test_ncu_runner_resolves_windows_batch_launcher(monkeypatch, tmp_path):
+    launcher = tmp_path / "ncu.bat"
+    launcher.write_text("@echo off\n")
+    native = tmp_path / "target" / "windows-desktop-win7-x64" / "ncu.exe"
+    native.parent.mkdir(parents=True)
+    native.write_bytes(b"")
+    monkeypatch.setattr("cuda_opt_agent.profiling.ncu_runner.shutil.which", lambda _: str(launcher))
+
+    runner = NCURunner(ProfilingConfig())
+    assert runner._command("--version") == [str(native), "--version"]
 
 
 # ── Metrics Validator Tests ───────────────────────────────────

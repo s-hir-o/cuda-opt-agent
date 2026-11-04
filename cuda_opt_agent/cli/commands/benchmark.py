@@ -17,6 +17,12 @@ def benchmark_cmd(
     arch: str = typer.Option(None, "--arch", "-a", help="Target GPU architecture"),
     warmup: int = typer.Option(3, "--warmup", "-w", help="Warmup iterations"),
     iterations: int = typer.Option(10, "--iterations", "-n", help="Timing iterations"),
+    include_dir: list[Path] | None = typer.Option(
+        None,
+        "--include-dir",
+        "-I",
+        help="Additional compiler include directory; repeat for multiple paths.",
+    ),
     config: Path = typer.Option(None, "--config", "-c", help="Path to config.yaml"),
 ):
     """Benchmark a CUDA kernel and display timing statistics."""
@@ -28,6 +34,11 @@ def benchmark_cmd(
     settings = load_settings(config)
     if arch:
         settings.compiler.default_arch = arch
+    for directory in include_dir or []:
+        if not directory.is_dir():
+            print_error(f"Include directory not found: {directory}")
+            raise typer.Exit(code=1)
+        settings.compiler.extra_flags.append(f"-I{directory.resolve()}")
     settings.benchmark.warmup_iterations = warmup
     settings.benchmark.timing_iterations = iterations
 
@@ -51,19 +62,31 @@ def benchmark_cmd(
 
 
 async def _run_benchmark(kernel: KernelSource, settings):
-    from cuda_opt_agent.benchmark.mock_runner import MockBenchmarkRunner
+    from cuda_opt_agent.benchmark.runner import ExecutableBenchmarkRunner
     from cuda_opt_agent.build.nvcc_runner import NVCCRunner
 
     nvcc = NVCCRunner(settings.compiler)
-
-    runner = MockBenchmarkRunner(arch=settings.compiler.default_arch)
+    runner = ExecutableBenchmarkRunner(
+        use_cuda_events=settings.benchmark.use_cuda_events,
+    )
 
     try:
+        compilation = await nvcc.compile_executable(
+            kernel,
+            arch=settings.compiler.default_arch,
+        )
+        if not compilation.success or not compilation.binary_path:
+            diagnostics = "; ".join(d.message for d in compilation.diagnostics[:3])
+            details = diagnostics or compilation.stderr[:500] or "unknown nvcc error"
+            print_error(f"Compilation failed: {details}")
+            return None
+
         return await runner.benchmark(
-            binary_path=f"/tmp/{kernel.name}",
+            binary_path=compilation.binary_path,
             variant_id=kernel.short_name,
             warmup_iterations=settings.benchmark.warmup_iterations,
             timing_iterations=settings.benchmark.timing_iterations,
+            timeout_s=settings.benchmark.timeout_seconds,
             arch=settings.compiler.default_arch,
         )
     except Exception as exc:

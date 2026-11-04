@@ -2,5 +2,6 @@
 
 from cuda_opt_agent.agents.base import AgentContext
 from cuda_opt_agent.agents.coordinator import Coordinator
+from cuda_opt_agent.agents.generator_agent import GeneratorAgent
 
-__all__ = ["AgentContext", "Coordinator"]
+__all__ = ["AgentContext", "Coordinator", "GeneratorAgent"]

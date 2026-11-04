@@ -13,6 +13,7 @@ from cuda_opt_agent.schemas.compilation import CompilationDiagnostic, Compilatio
 from cuda_opt_agent.schemas.correctness import CorrectnessResult
 from cuda_opt_agent.schemas.cost_model import BoundType, CostEstimate, ModelPrediction
 from cuda_opt_agent.schemas.features import KernelFeatureVector
+from cuda_opt_agent.schemas.generation import GeneratedKernelCandidate
 from cuda_opt_agent.schemas.kernel import KernelLanguage, KernelSource, KernelVariant
 from cuda_opt_agent.schemas.llm import LLMRequest, LLMResponse
 from cuda_opt_agent.schemas.metrics import ProfileMetrics
@@ -24,6 +25,8 @@ __all__ = [
     "KernelLanguage",
     "KernelSource",
     "KernelVariant",
+    # generation
+    "GeneratedKernelCandidate",
     # metrics
     "ProfileMetrics",
     # bottleneck

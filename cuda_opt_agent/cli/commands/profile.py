@@ -49,10 +49,13 @@ def profile_cmd(
 async def _run_profile(kernel: KernelSource, settings):
     from cuda_opt_agent.agents.base import AgentContext
     from cuda_opt_agent.agents.profiler_agent import ProfilerAgent
+    from cuda_opt_agent.build.nvcc_runner import NVCCRunner
     from cuda_opt_agent.core.ids import generate_run_id
-    from cuda_opt_agent.profiling.mock_profiler import MockProfiler
+    from cuda_opt_agent.profiling.ncu_runner import NCUProfiler, NCURunner
 
-    profiler = ProfilerAgent(MockProfiler())
+    nvcc = NVCCRunner(settings.compiler)
+    ncu = NCURunner(settings.profiling)
+    profiler = ProfilerAgent(NCUProfiler(ncu_runner=ncu, nvcc_runner=nvcc))
     ctx = AgentContext(
         run_id=generate_run_id(),
         kernel=kernel,

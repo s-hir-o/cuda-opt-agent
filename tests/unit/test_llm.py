@@ -7,6 +7,7 @@ import json
 import pytest
 
 from cuda_opt_agent.core.exceptions import ConfigurationError, LLMError, LLMRateLimitError
+from cuda_opt_agent.llm.openai_compatible_provider import OpenAICompatibleProvider
 from cuda_opt_agent.llm.provider import LLMProvider, extract_json
 from cuda_opt_agent.llm.factory import create_provider
 from cuda_opt_agent.core.config import LLMConfig, LLMProviderConfig
@@ -363,4 +364,75 @@ class TestFactory:
         provider = create_provider(config)
         assert provider.provider_name() == "ollama"
         assert provider.estimate_cost(1000, 1000) == 0.0
+
+    def test_vllm_creation(self):
+        config = LLMConfig(provider="vllm")
+        provider = create_provider(config)
+        assert provider.provider_name() == "vllm"
+        assert provider.estimate_cost(1000, 1000) == 0.0
+
+
+class TestOpenAICompatibleProvider:
+
+    @pytest.mark.asyncio
+    async def test_generate_posts_chat_completion(self, monkeypatch):
+        requests = []
+
+        class _Response:
+            status_code = 200
+
+            def json(self):
+                return {
+                    "choices": [
+                        {"message": {"content": '{"transforms": []}'}}
+                    ],
+                    "usage": {
+                        "prompt_tokens": 11,
+                        "completion_tokens": 7,
+                    },
+                }
+
+        class _Client:
+            class _Timeout:
+                read = 300.0
+
+            timeout = _Timeout()
+
+            async def post(self, url, json, headers):
+                requests.append((url, json, headers))
+                return _Response()
+
+            async def get(self, url, headers):
+                return _Response()
+
+        provider = OpenAICompatibleProvider(
+            LLMProviderConfig(
+                model="ByteDance-Seed/cudaLLM-8B",
+                base_url="http://localhost:8000/v1",
+            ),
+            provider_name="vllm",
+        )
+        provider._client = _Client()
+
+        response = await provider.generate(
+            LLMRequest(
+                prompt="Suggest CUDA transforms",
+                system_prompt="Return JSON",
+                json_mode=True,
+            )
+        )
+
+        assert response.provider == "vllm"
+        assert response.model == "ByteDance-Seed/cudaLLM-8B"
+        assert response.content == '{"transforms": []}'
+        assert response.input_tokens == 11
+        assert response.output_tokens == 7
+
+        url, body, headers = requests[0]
+        assert url == "http://localhost:8000/v1/chat/completions"
+        assert body["model"] == "ByteDance-Seed/cudaLLM-8B"
+        assert body["response_format"] == {"type": "json_object"}
+        assert body["messages"][0]["role"] == "system"
+        assert body["messages"][1]["role"] == "user"
+        assert headers["Content-Type"] == "application/json"
 

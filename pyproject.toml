@@ -31,6 +31,9 @@ dependencies = [
     "anyio>=4.0",
 ]
 
+[project.scripts]
+cuda-opt = "cuda_opt_agent.cli.app:main"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.4",

@@ -30,7 +30,7 @@ profiling:
 benchmark:
   warmup_iterations: 3
   timing_iterations: 10
-  use_cuda_events: true
+  use_cuda_events: false
   timeout_seconds: 120
 
 llm:
@@ -52,6 +52,12 @@ llm:
     base_url: "http://localhost:11434"
     max_tokens: 4096
     temperature: 0.3
+  vllm:
+    model: "ByteDance-Seed/cudaLLM-8B"
+    base_url: "http://localhost:8000/v1"
+    max_tokens: 4096
+    temperature: 0.2
+    timeout_seconds: 300.0
 
 optimization:
   max_iterations: 20

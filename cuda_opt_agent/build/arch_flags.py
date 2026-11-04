@@ -102,7 +102,7 @@ def common_flags(
             "nvcc supports -O0 through -O3."
         )
 
-    flags = [f"-O{optimization_level}"]
+    flags = [f"-O{optimization_level}", "-std=c++17"]
 
     if fast_math:
         flags.append("--use_fast_math")

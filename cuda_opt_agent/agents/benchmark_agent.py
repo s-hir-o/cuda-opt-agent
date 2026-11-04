@@ -18,6 +18,7 @@ from cuda_opt_agent.benchmark.runner import BenchmarkRunner
 from cuda_opt_agent.build.nvcc_runner import NVCCRunner
 from cuda_opt_agent.core.config import BenchmarkConfig
 from cuda_opt_agent.core.logging import get_logger
+from cuda_opt_agent.correctness.runner import CorrectnessRunner
 from cuda_opt_agent.schemas.benchmark import BenchmarkResult, SpeedupResult
 from cuda_opt_agent.schemas.compilation import CompilationResult
 from cuda_opt_agent.schemas.correctness import CorrectnessResult
@@ -34,10 +35,16 @@ class BenchmarkAgent:
         nvcc_runner: NVCCRunner,
         benchmark_runner: BenchmarkRunner,
         benchmark_config: BenchmarkConfig,
+        correctness_runner: CorrectnessRunner | None = None,
+        correctness_tolerance_absolute: float = 1e-5,
+        correctness_tolerance_relative: float = 1e-4,
     ) -> None:
         self._nvcc = nvcc_runner
         self._bench = benchmark_runner
         self._config = benchmark_config
+        self._correctness = correctness_runner
+        self._correctness_tolerance_absolute = correctness_tolerance_absolute
+        self._correctness_tolerance_relative = correctness_tolerance_relative
 
     async def compile(
         self,
@@ -98,19 +105,24 @@ class BenchmarkAgent:
                 message="Baseline compilation failed — cannot compare",
             )
 
-        # TODO: Real GPU comparison — run both kernels, compare output arrays
-        # element-wise against tolerance. This requires GPU runtime integration
-        # which is beyond the scope of the agent layer. For now, we require
-        # a functional comparison to be injected or implemented in the runtime.
-        # Until then, fail closed.
+        if self._correctness is not None:
+            return await self._correctness.compare(
+                variant_id=variant_id,
+                baseline_variant_id=baseline_id,
+                variant_result=variant_result,
+                baseline_result=baseline_result,
+                tolerance_absolute=self._correctness_tolerance_absolute,
+                tolerance_relative=self._correctness_tolerance_relative,
+            )
+
         return CorrectnessResult(
             passed=False,
             variant_id=variant_id,
             baseline_variant_id=baseline_id,
             message=(
-                "GPU output comparison not yet implemented. "
+                "No correctness runner configured. "
                 "Correctness cannot be verified — blocking benchmark. "
-                "Enable GPU runtime comparison to allow benchmarking."
+                "Inject a correctness runner to allow benchmarking."
             ),
         )
 
@@ -143,6 +155,7 @@ class BenchmarkAgent:
             variant_id=variant_id,
             warmup_iterations=self._config.warmup_iterations,
             timing_iterations=self._config.timing_iterations,
+            timeout_s=self._config.timeout_seconds,
             arch=arch,
             block_size=block_size,
             grid_size=grid_size,

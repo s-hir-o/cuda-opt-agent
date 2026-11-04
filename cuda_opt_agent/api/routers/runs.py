@@ -186,10 +186,12 @@ async def _run_optimization(
         from cuda_opt_agent.agents.analysis_agent import AnalysisAgent
         from cuda_opt_agent.agents.bottleneck_agent import BottleneckAgent
         from cuda_opt_agent.agents.transform_agent import TransformAgent
+        from cuda_opt_agent.agents.generator_agent import GeneratorAgent
         from cuda_opt_agent.agents.benchmark_agent import BenchmarkAgent
         from cuda_opt_agent.analysis.ptx.mock_analyzer import MockPTXAnalyzer
         from cuda_opt_agent.benchmark.mock_runner import MockBenchmarkRunner
         from cuda_opt_agent.build.nvcc_runner import NVCCRunner
+        from cuda_opt_agent.correctness.mock_runner import MockCorrectnessRunner
         from cuda_opt_agent.cost_models.analytical.roofline import RooflineModel
         from cuda_opt_agent.features.extractors.ncu_features import NCUFeatureExtractor
         from cuda_opt_agent.features.pipeline import FeaturePipeline
@@ -212,6 +214,13 @@ async def _run_optimization(
             from cuda_opt_agent.agents.transform_agent import TransformAgent as _TA
             llm = None
 
+        generator_agent = GeneratorAgent(llm) if llm else None
+        transform_agent = (
+            TransformAgent(llm)
+            if llm and generator_agent is None
+            else TransformAgent(_NoOpLLM())
+        )
+
         coordinator = Coordinator(
             profiler_agent=profiler,
             analysis_agent=AnalysisAgent(
@@ -220,14 +229,18 @@ async def _run_optimization(
                 cost_model=RooflineModel(),
             ),
             bottleneck_agent=BottleneckAgent(),
-            transform_agent=TransformAgent(llm) if llm else TransformAgent(_NoOpLLM()),
+            transform_agent=transform_agent,
             benchmark_agent=BenchmarkAgent(
                 nvcc_runner=nvcc,
                 benchmark_runner=MockBenchmarkRunner(),
                 benchmark_config=cfg.benchmark,
+                correctness_runner=MockCorrectnessRunner(),
+                correctness_tolerance_absolute=cfg.optimization.correctness_tolerance.absolute,
+                correctness_tolerance_relative=cfg.optimization.correctness_tolerance.relative,
             ),
             search_strategy=GridSearch(batch_size=cfg.search.grid.parallelism),
             config=cfg,
+            generator_agent=generator_agent,
         )
 
         run = await coordinator.optimize(kernel)

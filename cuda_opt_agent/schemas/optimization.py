@@ -50,6 +50,22 @@ class OptimizationIteration(BaseModel):
     def achieved_speedup(self) -> float:
         return self.speedup.speedup if self.speedup else 1.0
 
+    @property
+    def validated_speedup(self) -> float:
+        """Speedup eligible for best-variant selection.
+
+        Raw speedups are useful for reporting, but a candidate should only be
+        selected as best when the benchmark comparator marked it as both
+        statistically significant and above the configured effect-size floor.
+        """
+        if self.speedup is None:
+            return 1.0
+        if not self.speedup.significant:
+            return 1.0
+        if not self.speedup.is_improvement:
+            return 1.0
+        return self.speedup.effective_speedup
+
 
 class OptimizationRun(BaseModel):
     """Full optimization run tracking all iterations."""
@@ -80,6 +96,6 @@ class OptimizationRun(BaseModel):
 
     def add_iteration(self, iteration: OptimizationIteration) -> None:
         self.iterations.append(iteration)
-        if iteration.achieved_speedup > self.best_speedup:
-            self.best_speedup = iteration.achieved_speedup
+        if iteration.validated_speedup > self.best_speedup:
+            self.best_speedup = iteration.validated_speedup
             self.best_variant_id = iteration.variant_id

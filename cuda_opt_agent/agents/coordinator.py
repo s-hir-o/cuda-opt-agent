@@ -22,6 +22,7 @@ from cuda_opt_agent.agents.analysis_agent import AnalysisAgent
 from cuda_opt_agent.agents.base import AgentContext
 from cuda_opt_agent.agents.benchmark_agent import BenchmarkAgent
 from cuda_opt_agent.agents.bottleneck_agent import BottleneckAgent
+from cuda_opt_agent.agents.generator_agent import GeneratorAgent
 from cuda_opt_agent.agents.profiler_agent import ProfilerAgent
 from cuda_opt_agent.agents.transform_agent import TransformAgent
 from cuda_opt_agent.core.config import AppSettings
@@ -30,6 +31,7 @@ from cuda_opt_agent.core.logging import get_logger
 from cuda_opt_agent.search.base import SearchContext, SearchResult, SearchStrategy
 from cuda_opt_agent.schemas.benchmark import BenchmarkResult
 from cuda_opt_agent.schemas.compilation import CompilationResult
+from cuda_opt_agent.schemas.generation import GeneratedKernelCandidate
 from cuda_opt_agent.schemas.kernel import KernelSource, KernelVariant
 from cuda_opt_agent.schemas.optimization import OptimizationIteration, OptimizationRun
 from cuda_opt_agent.schemas.transform import TransformSpec
@@ -54,6 +56,7 @@ class Coordinator:
         benchmark_agent: BenchmarkAgent,
         search_strategy: SearchStrategy,
         config: AppSettings,
+        generator_agent: GeneratorAgent | None = None,
     ) -> None:
         self._profiler = profiler_agent
         self._analysis = analysis_agent
@@ -62,6 +65,7 @@ class Coordinator:
         self._benchmark = benchmark_agent
         self._search = search_strategy
         self._config = config
+        self._generator = generator_agent
 
     async def optimize(self, kernel: KernelSource) -> OptimizationRun:
         """Run the full optimization pipeline on a kernel.
@@ -119,6 +123,7 @@ class Coordinator:
         no_improvement_count = 0
         patience = self._config.optimization.convergence_patience
         iteration = 0
+        generation_attempted = False
 
         self._search.reset()
         search_ctx = SearchContext(
@@ -129,17 +134,77 @@ class Coordinator:
 
         while iteration < max_iter:
             # Generate candidates
-            candidates = self._search.generate_candidates(search_ctx)
-            if not candidates:
-                # Try LLM if search exhausted
-                llm_specs = await self._transform.run(baseline_ctx, max_suggestions=3)
-                candidates = llm_specs
+            candidates: list[TransformSpec] = []
+            generated_candidates: list[GeneratedKernelCandidate] = []
+            if self._generator is not None and not generation_attempted:
+                generation_attempted = True
+                generated_candidates = await self._generator.run(
+                    baseline_ctx,
+                    max_candidates=min(3, max_iter - iteration),
+                    required_entry_point=kernel.entry_point,
+                    require_runnable_harness=True,
+                )
 
-            if not candidates:
+            if not generated_candidates:
+                candidates = self._search.generate_candidates(search_ctx)
+                if not candidates and self._generator is None:
+                    # Try LLM transform suggestions if search exhausted and no generator is configured
+                    llm_specs = await self._transform.run(baseline_ctx, max_suggestions=3)
+                    candidates = llm_specs
+
+            if not candidates and not generated_candidates:
                 log.info("coordinator.no_candidates", run_id=run_id)
                 break
 
-            # Evaluate ALL candidates in the batch
+            # Evaluate generated source candidates through the same benchmark gates.
+            for generated in generated_candidates:
+                if iteration >= max_iter:
+                    break
+
+                iteration += 1
+                log.info(
+                    "coordinator.generated_iteration",
+                    run_id=run_id,
+                    iteration=iteration,
+                    entry_point=generated.entry_point,
+                )
+
+                iter_result, search_result = await self._evaluate_generated_and_report(
+                    candidate=generated,
+                    iteration=iteration,
+                    kernel=kernel,
+                    run_id=run_id,
+                    arch=arch,
+                    baseline_benchmark=baseline_benchmark,
+                    baseline_compilation=baseline_compilation,
+                )
+
+                run.add_iteration(iter_result)
+
+                if (
+                    iter_result.validated_speedup > best_speedup * self._config.optimization.min_speedup_threshold
+                ):
+                    best_speedup = iter_result.validated_speedup
+                    run.best_speedup = best_speedup
+                    run.best_variant_id = iter_result.variant_id
+                    no_improvement_count = 0
+                    search_ctx.best_speedup = best_speedup
+                else:
+                    no_improvement_count += 1
+
+                search_ctx.iteration = iteration
+                search_ctx.previous_results.append(search_result)
+
+                if no_improvement_count >= patience:
+                    run.status = "converged"
+                    break
+
+            if generated_candidates:
+                if run.status == "converged":
+                    break
+                continue
+
+            # Evaluate ALL transform candidates in the batch
             for spec in candidates:
                 if iteration >= max_iter:
                     break
@@ -167,9 +232,9 @@ class Coordinator:
 
                 # Track convergence
                 if (
-                    iter_result.achieved_speedup > best_speedup * self._config.optimization.min_speedup_threshold
+                    iter_result.validated_speedup > best_speedup * self._config.optimization.min_speedup_threshold
                 ):
-                    best_speedup = iter_result.achieved_speedup
+                    best_speedup = iter_result.validated_speedup
                     run.best_speedup = best_speedup
                     run.best_variant_id = iter_result.variant_id
                     no_improvement_count = 0
@@ -344,6 +409,7 @@ class Coordinator:
                 variant_id=variant_id,
                 parent_source=kernel,
                 source_code=result.transformed_source,
+                entry_point=kernel.entry_point,
                 iteration=iteration,
                 transform_history=list(
                     getattr(kernel, "transform_history", [])
@@ -386,6 +452,47 @@ class Coordinator:
         self._report_search_result(spec, iter_result)
         search_result = self._make_search_result(spec, iter_result)
 
+        return iter_result, search_result
+
+    async def _evaluate_generated_and_report(
+        self,
+        candidate: GeneratedKernelCandidate,
+        iteration: int,
+        kernel: KernelSource,
+        run_id: str,
+        arch: str,
+        baseline_benchmark: BenchmarkResult | None,
+        baseline_compilation: CompilationResult | None,
+    ) -> tuple[OptimizationIteration, SearchResult]:
+        """Evaluate one generated CUDA source candidate."""
+        spec = candidate.to_transform_spec()
+        variant_id = generate_variant_id(
+            kernel.short_name, iteration, spec.transform_name
+        )
+        variant = candidate.to_variant(
+            parent=kernel,
+            variant_id=variant_id,
+            iteration=iteration,
+        )
+
+        variant_ctx = await self._benchmark.evaluate_variant(
+            ctx=AgentContext(run_id=run_id, kernel=kernel, arch=arch),
+            variant=variant,
+            baseline_benchmark=baseline_benchmark,
+            baseline_variant_id="baseline",
+            baseline_compilation=baseline_compilation,
+        )
+
+        iter_result = self._build_iteration(
+            iteration_num=iteration,
+            variant_id=variant_id,
+            variant=variant,
+            ctx=variant_ctx,
+        )
+        iter_result.transform_applied = spec
+
+        self._report_search_result(spec, iter_result)
+        search_result = self._make_search_result(spec, iter_result)
         return iter_result, search_result
 
     def _build_iteration(
@@ -458,7 +565,9 @@ class Coordinator:
 
     def _get_applicable_transforms(self, ctx: AgentContext) -> list:
         """Get transforms applicable to the baseline bottleneck."""
-        if ctx.bottleneck is None:
+        from cuda_opt_agent.schemas.bottleneck import BottleneckClass
+
+        if ctx.bottleneck is None or ctx.bottleneck.primary == BottleneckClass.UNCLASSIFIED:
             from cuda_opt_agent.transforms.registry import list_transforms
             from cuda_opt_agent.transforms.registry import get_transform
 
@@ -466,7 +575,13 @@ class Coordinator:
 
         from cuda_opt_agent.transforms.registry import transforms_for_bottleneck
 
-        return transforms_for_bottleneck(ctx.bottleneck.primary)
+        transforms = transforms_for_bottleneck(ctx.bottleneck.primary)
+        if not transforms:
+            from cuda_opt_agent.transforms.registry import list_transforms
+            from cuda_opt_agent.transforms.registry import get_transform
+
+            return [get_transform(n) for n in list_transforms()]
+        return transforms
 
 
 def _make_variant(
@@ -477,5 +592,6 @@ def _make_variant(
         variant_id=variant_id,
         parent_source=kernel,
         source_code=kernel.source_code,
+        entry_point=kernel.entry_point,
         iteration=iteration,
     )

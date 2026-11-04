@@ -31,7 +31,10 @@ class KernelTimer(ABC):
 
     @abstractmethod
     async def measure(
-        self, binary_path: str, kernel_name: str | None = None
+        self,
+        binary_path: str,
+        kernel_name: str | None = None,
+        timeout_s: float = 120.0,
     ) -> TimingMeasurement:
         """Execute the binary and measure kernel time."""
 
@@ -45,7 +48,10 @@ class HostTimer(KernelTimer):
     """
 
     async def measure(
-        self, binary_path: str, kernel_name: str | None = None
+        self,
+        binary_path: str,
+        kernel_name: str | None = None,
+        timeout_s: float = 120.0,
     ) -> TimingMeasurement:
         t0 = time.monotonic()
         try:
@@ -54,16 +60,18 @@ class HostTimer(KernelTimer):
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
             )
-            await asyncio.wait_for(proc.communicate(), timeout=120)
+            _stdout, stderr = await asyncio.wait_for(
+                proc.communicate(), timeout=timeout_s
+            )
         except FileNotFoundError as exc:
             raise BenchmarkError(f"Binary not found: {binary_path}") from exc
         except asyncio.TimeoutError as exc:
             raise BenchmarkError(f"Benchmark timed out: {binary_path}") from exc
 
         if proc.returncode != 0:
-            stderr = proc.stderr.decode(errors="replace")[:500]
+            stderr_text = stderr.decode(errors="replace")[:500]
             raise BenchmarkError(
-                f"Benchmark exited with code {proc.returncode}: {stderr}"
+                f"Benchmark exited with code {proc.returncode}: {stderr_text}"
             )
 
         elapsed_s = time.monotonic() - t0
@@ -85,7 +93,10 @@ class CudaEventTimer(KernelTimer):
     """
 
     async def measure(
-        self, binary_path: str, kernel_name: str | None = None
+        self,
+        binary_path: str,
+        kernel_name: str | None = None,
+        timeout_s: float = 120.0,
     ) -> TimingMeasurement:
         """Run the CUDA-event-instrumented binary and parse elapsed time."""
         try:
@@ -95,7 +106,7 @@ class CudaEventTimer(KernelTimer):
                 stderr=asyncio.subprocess.PIPE,
             )
             stdout, stderr = await asyncio.wait_for(
-                proc.communicate(), timeout=120
+                proc.communicate(), timeout=timeout_s
             )
         except FileNotFoundError as exc:
             raise BenchmarkError(f"Binary not found: {binary_path}") from exc

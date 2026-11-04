@@ -84,6 +84,7 @@ class TestCommonFlags:
     def test_defaults(self):
         flags = common_flags()
         assert "-O3" in flags
+        assert "-std=c++17" in flags
         assert "-lineinfo" in flags
         assert "--use_fast_math" not in flags
 

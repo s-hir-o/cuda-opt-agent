@@ -32,8 +32,13 @@ def create_provider(config: LLMConfig) -> LLMProvider:
         case "ollama":
             from cuda_opt_agent.llm.ollama_provider import OllamaProvider
             return OllamaProvider(config.ollama)
+        case "vllm":
+            from cuda_opt_agent.llm.openai_compatible_provider import (
+                OpenAICompatibleProvider,
+            )
+            return OpenAICompatibleProvider(config.vllm, provider_name="vllm")
         case _:
             raise ConfigurationError(
                 f"Unknown LLM provider '{config.provider}'. "
-                f"Supported: claude, openai, gemini, ollama"
+                f"Supported: claude, openai, gemini, ollama, vllm"
             )

@@ -33,6 +33,7 @@ class TestAppSettingsDefaults:
         settings = AppSettings()
         assert settings.benchmark.warmup_iterations == 3
         assert settings.benchmark.timing_iterations == 10
+        assert settings.benchmark.use_cuda_events is False
 
     def test_default_search_strategy(self):
         settings = AppSettings()
@@ -100,3 +101,9 @@ class TestNestedConfig:
     def test_llm_config_openai_model(self):
         config = LLMConfig()
         assert config.openai.model == "gpt-4o"
+
+    def test_llm_config_vllm_model(self):
+        config = LLMConfig(provider="vllm")
+        assert config.provider == "vllm"
+        assert config.vllm.model == "ByteDance-Seed/cudaLLM-8B"
+        assert config.vllm.base_url == "http://localhost:8000/v1"

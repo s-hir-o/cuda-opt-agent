@@ -172,9 +172,11 @@ class NVCCRunner:
         cubin_path is NOT set — the output is an executable, not a cubin.
         """
         arch = arch or self._default_arch
+        output_dir = output_dir or tempfile.mkdtemp(prefix="cuda_opt_exec_")
 
         with self._prepare_source(kernel, output_dir) as (source_path, work_dir):
-            out_path = str(Path(work_dir) / "kernel_exec")
+            executable_name = "kernel_exec.exe" if os.name == "nt" else "kernel_exec"
+            out_path = str(Path(work_dir) / executable_name)
             flags = [
                 *executable_arch_flag(arch),
                 *self._build_flags(extra_flags),
@@ -218,6 +220,8 @@ class NVCCRunner:
     def _build_flags(self, extra_flags: list[str] | None = None) -> list[str]:
         """Assemble common + extra + per-call flags."""
         merged_extra = list(self._extra_flags) + (extra_flags or [])
+        if os.name == "nt" and not any("/Zc:preprocessor" in flag for flag in merged_extra):
+            merged_extra.append("-Xcompiler=/Zc:preprocessor")
         return common_flags(extra=merged_extra)
 
     async def _run_nvcc(
