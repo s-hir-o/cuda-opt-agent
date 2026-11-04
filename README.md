@@ -116,3 +116,7 @@ The suite resumes existing per-case `result.json` files. For fresh measurements,
 This is an experimental optimization workbench. Source transforms have limited pattern coverage; invalid candidates and unchanged outputs are expected. Bayesian/evolutionary search, learned/TVM cost models, and some compiler-analysis integrations are explicit stubs. GPU-counter availability and timing noise affect what can be measured.
 
 Original development commits span **June 22–July 9, 2026**. The publishing history preserves original author/committer dates and messages, including the later audit commit. Historical snapshots were filtered to remove local secret-key files, environment files, generated caches, and development scratch material, so commit hashes changed. [The history map](docs/history-map.json) records that correspondence. Current implementation updates, benchmark evidence, and publication documentation use their actual publication dates rather than backdating October evidence into June/July.
+
+## License
+
+[MIT](LICENSE), as selected in the GitHub repository.

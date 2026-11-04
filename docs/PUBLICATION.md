@@ -6,4 +6,4 @@ New commits capture the current implementation, curated October benchmark eviden
 
 Fresh publication validation: 672 passed, 5 skipped using `python -m pytest -q -m "not gpu" -p no:cacheprovider`. Three dependency deprecation warnings were observed. No new GPU speedup measurements were made.
 
-No license grant has been added on the author's behalf.
+The MIT license selected by the author in the GitHub repository's initial commit is retained in LICENSE.
